@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Log_analyzer - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-firewall_parser">#firewall_parser</a>
+    
+    <li ><a href="#method-i-get_country_list_code2">#get_country_list_code2</a>
+    
+    <li ><a href="#method-i-get_country_list_code3">#get_country_list_code3</a>
+    
+    <li ><a href="#method-i-get_detections">#get_detections</a>
+    
+    <li ><a href="#method-i-get_firewall_detections">#get_firewall_detections</a>
+    
+    <li ><a href="#method-i-insert_new_regexp_service">#insert_new_regexp_service</a>
+    
+    <li ><a href="#method-i-parse_firewall_file">#parse_firewall_file</a>
+    
+    <li ><a href="#method-i-parse_log_file">#parse_log_file</a>
+    
+    <li ><a href="#method-i-service_parser">#service_parser</a>
+    
+    <li ><a href="#method-i-services">#services</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Log_analyzer">
+  <h1 id="class-Log_analyzer" class="class">
+    class Log_analyzer
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(filename,debug_level)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Initializa o objecto e tem como requisito o nome do ficheiro a processar</p>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File log_analyzer.rb, line 22</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">filename</span>,<span class="ruby-identifier">debug_level</span>)
+  <span class="ruby-constant">Debugger</span>.<span class="ruby-identifier">set_level</span>(<span class="ruby-identifier">debug_level</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">filename</span>) <span class="ruby-operator">&amp;&amp;</span>  <span class="ruby-constant">File</span>.<span class="ruby-identifier">readable?</span>(<span class="ruby-identifier">filename</span>)
+  <span class="ruby-ivar">@filename</span> = <span class="ruby-identifier">filename</span>
+  <span class="ruby-ivar">@file</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">filename</span>,<span class="ruby-identifier">mode</span>=<span class="ruby-string">&quot;r&quot;</span>)
+  <span class="ruby-identifier">services</span>
+  <span class="ruby-ivar">@detections</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-ivar">@geoip</span> = <span class="ruby-constant">GeoIP</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">'GeoIP.dat'</span>)
+  <span class="ruby-ivar">@country_code3</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-ivar">@country_code2</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-ivar">@fff</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-constant">Debugger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-node">&quot;Ficheiro nao existe: #{filename}&quot;</span>,<span class="ruby-value">3</span>)
+    <span class="ruby-identifier">exit</span>
+ <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-firewall_parser" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">firewall_parser</span><span
+            class="method-args">(l)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>identico ao service parser porem como a estrutura do ficheiro é diferente o
+codigo de analise tambem o é</p>
+          
+          
+
+          
+          <div class="method-source-code" id="firewall_parser-source">
+            <pre><span class="ruby-comment"># File log_analyzer.rb, line 109</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">firewall_parser</span>(<span class="ruby-identifier">l</span>)
+  
+    
+  <span class="ruby-ivar">@service_name_list</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+     <span class="ruby-identifier">re</span> = <span class="ruby-node">/#{k}/</span> 
+     <span class="ruby-comment">#p l</span>
+     <span class="ruby-comment">#p re</span>
+     <span class="ruby-comment">#p l.match re</span>
+     <span class="ruby-keyword">if</span> <span class="ruby-identifier">l</span>.<span class="ruby-identifier">match</span> <span class="ruby-identifier">re</span> <span class="ruby-comment">#faz match na linha e no servico a analisar (k)</span>
+       <span class="ruby-identifier">v</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">sre</span><span class="ruby-operator">|</span>
+               <span class="ruby-keyword">if</span> <span class="ruby-identifier">l</span>.<span class="ruby-identifier">match</span> <span class="ruby-identifier">sre</span>
+                 <span class="ruby-identifier">ip_match</span>  = <span class="ruby-identifier">l</span>.<span class="ruby-identifier">match</span> <span class="ruby-regexp">/SRC=(\d+\.\d+\.\d+\.\d+)/</span>
+                 <span class="ruby-identifier">time_match</span> = <span class="ruby-identifier">l</span>.<span class="ruby-identifier">match</span> <span class="ruby-regexp">/(\w{3}\s+\d{2}\s+\d{2}:\d{2}:\d{2})/</span>
+                 <span class="ruby-identifier">dport</span> = <span class="ruby-identifier">l</span>.<span class="ruby-identifier">match</span> <span class="ruby-regexp">/DPT=(\d+)/</span>
+                 <span class="ruby-identifier">dport</span> = <span class="ruby-identifier">dport</span>[<span class="ruby-value">1</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">dport</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                 <span class="ruby-identifier">dport</span> = <span class="ruby-string">&quot;0&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">dport</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> 
+                 <span class="ruby-comment"># p l</span>
+                 <span class="ruby-keyword">if</span> <span class="ruby-identifier">ip_match</span>
+                  <span class="ruby-comment"># p ip_match[1]</span>
+                    <span class="ruby-comment">#Debugger.debug(&quot;IP ENCONTRADO #{ip_match[1]}\n&quot;,1)</span>
+                    <span class="ruby-comment">#Debugger.debug(@geoip.country(&quot;#{ip_match[1]}&quot;),4)</span>
+                    <span class="ruby-comment"># verifica se o ip se encontra na lista de ocorrencais e incrementa 1</span>
+                 <span class="ruby-keyword">begin</span>
+                   <span class="ruby-comment">#p&quot;START #{@fff}&quot;</span>
+                   <span class="ruby-identifier">port_hash</span> = (<span class="ruby-ivar">@fff</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">k</span>))                     
+                   <span class="ruby-comment">#p&quot;port_hash #{port_hash}&quot;</span>
+                     <span class="ruby-keyword">begin</span>
+                       <span class="ruby-keyword">begin</span> 
+                        <span class="ruby-identifier">ips_h</span> = <span class="ruby-identifier">port_hash</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">dport</span>)
+                        
+                        <span class="ruby-keyword">begin</span>
+                        <span class="ruby-identifier">tmp_ip_time_hash</span> = <span class="ruby-identifier">ips_h</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">ip_match</span>[<span class="ruby-value">1</span>])
+                         <span class="ruby-identifier">tmp_ip_time_hash</span>[<span class="ruby-string">'hits'</span>]=<span class="ruby-identifier">tmp_ip_time_hash</span>[<span class="ruby-string">'hits'</span>]<span class="ruby-operator">+</span><span class="ruby-value">1</span>
+                         <span class="ruby-identifier">tmp_ip_time_hash</span>[<span class="ruby-string">'when'</span>]=<span class="ruby-identifier">tmp_ip_time_hash</span>[<span class="ruby-string">'when'</span>]<span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">time_match</span> 
+                         <span class="ruby-comment"># ips_h.store(&quot;#{ip_match[1]}&quot;,{&quot;when&quot;=&gt;[],&quot;hits&quot;=&gt;1+ips_h.fetch(&quot;#{ip_match[1]}&quot;).fetch(&quot;hits&quot;)})</span>
+                        <span class="ruby-keyword">rescue</span>
+                        <span class="ruby-identifier">ips_h</span>.<span class="ruby-identifier">store</span>(<span class="ruby-identifier">ip_match</span>[<span class="ruby-value">1</span>],{<span class="ruby-string">&quot;hits&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value">1</span>,<span class="ruby-string">&quot;when&quot;</span>=<span class="ruby-operator">&gt;</span>[<span class="ruby-identifier">time_match</span>]})
+                        <span class="ruby-keyword">end</span>
+                       <span class="ruby-keyword">rescue</span> <span class="ruby-constant">KeyError</span>
+                  <span class="ruby-comment">#     p &quot;134: A INSERIR #{ {dport=&gt;{&quot;#{ip_match[1]}&quot;=&gt;{&quot;hits&quot;=&gt;1,&quot;when&quot;=&gt;[time_match]}}} }&quot;                        </span>
+                        <span class="ruby-identifier">port_hash</span>.<span class="ruby-identifier">store</span>(<span class="ruby-identifier">dport</span>,{<span class="ruby-node">&quot;#{ip_match[1]}&quot;</span>=<span class="ruby-operator">&gt;</span>{<span class="ruby-string">&quot;hits&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value">1</span>,<span class="ruby-string">&quot;when&quot;</span>=<span class="ruby-operator">&gt;</span>[<span class="ruby-identifier">time_match</span>]}})
+                       <span class="ruby-keyword">end</span>                       
+                     <span class="ruby-keyword">rescue</span> <span class="ruby-constant">KeyError</span> 
+                 <span class="ruby-comment">#  p &quot;138: A INSERIR #{ {k=&gt;{&quot;#{dport}&quot;=&gt;{&quot;#{ip_match[1]}&quot;=&gt;{&quot;hits&quot;=&gt;1,&quot;when&quot;=&gt;[time_match]}}}} }&quot;                     </span>
+                       <span class="ruby-ivar">@fff</span>.<span class="ruby-identifier">store</span>(<span class="ruby-identifier">k</span>,{<span class="ruby-node">&quot;#{dport}&quot;</span>=<span class="ruby-operator">&gt;</span>{<span class="ruby-node">&quot;#{ip_match[1]}&quot;</span>=<span class="ruby-operator">&gt;</span>{<span class="ruby-string">&quot;hits&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value">1</span>,<span class="ruby-string">&quot;when&quot;</span>=<span class="ruby-operator">&gt;</span>[<span class="ruby-identifier">time_match</span>]}}})
+                     <span class="ruby-keyword">end</span>  
+                 <span class="ruby-keyword">rescue</span> <span class="ruby-constant">KeyError</span>
+                   <span class="ruby-comment"># so executa quando o ip ainda n existe no HASH</span>
+                   <span class="ruby-comment">#p defined? @fff</span>
+                   <span class="ruby-comment">#p &quot;143: A INSERIR #{ {k=&gt;{&quot;#{dport}&quot;=&gt;{&quot;#{ip_match[1]}&quot;=&gt;{&quot;hits&quot;=&gt;1,&quot;when&quot;=&gt;[time_match]}}}} }&quot;</span>
+                   <span class="ruby-ivar">@fff</span>.<span class="ruby-identifier">store</span>(<span class="ruby-identifier">k</span>,{<span class="ruby-node">&quot;#{dport}&quot;</span>=<span class="ruby-operator">&gt;</span>{<span class="ruby-node">&quot;#{ip_match[1]}&quot;</span>=<span class="ruby-operator">&gt;</span>{<span class="ruby-string">&quot;hits&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value">1</span>,<span class="ruby-string">&quot;when&quot;</span>=<span class="ruby-operator">&gt;</span>[<span class="ruby-identifier">time_match</span>]}}})
+                   <span class="ruby-comment">#p @fff</span>
+                 <span class="ruby-keyword">end</span>              
+                 
+                <span class="ruby-keyword">end</span>
+               <span class="ruby-keyword">end</span>
+             <span class="ruby-comment">#p &quot;START&quot;  </span>
+             <span class="ruby-comment">#p @fff</span>
+             <span class="ruby-comment">#p &quot;####&quot;</span>
+               }
+     <span class="ruby-keyword">end</span>
+     
+      }
+  
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-get_country_list_code2" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_country_list_code2</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>retorna a variavel de instancia @country_code2 ( com 2 digitos q
+identificam o pais)</p>
+          
+          
+
+          
+          <div class="method-source-code" id="get_country_list_code2-source">
+            <pre><span class="ruby-comment"># File log_analyzer.rb, line 240</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_country_list_code2</span>  
+<span class="ruby-keyword">return</span> <span class="ruby-ivar">@country_code2</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-get_country_list_code3" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_country_list_code3</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>retorna a variavel de instancia @country_code2 ( com 2 digitos q
+identificam o pais)</p>
+          
+          
+
+          
+          <div class="method-source-code" id="get_country_list_code3-source">
+            <pre><span class="ruby-comment"># File log_analyzer.rb, line 233</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_country_list_code3</span>  
+<span class="ruby-keyword">return</span> <span class="ruby-ivar">@country_code3</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-get_detections" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_detections</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>retorna a lista de servicos e os enderecos ipv4 com hits variavel de
+instancia @detections</p>
+          
+          
+
+          
+          <div class="method-source-code" id="get_detections-source">
+            <pre><span class="ruby-comment"># File log_analyzer.rb, line 210</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_detections</span> 
+  <span class="ruby-constant">Debugger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-ivar">@detections</span>,<span class="ruby-value">3</span>) 
+  <span class="ruby-constant">Debugger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-ivar">@country_code3</span>,<span class="ruby-value">3</span>)
+  <span class="ruby-constant">Debugger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-ivar">@country_code2</span>,<span class="ruby-value">3</span>) 
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@detections</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-get_firewall_detections" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_firewall_detections</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>retorna a lista de servicos e os enderecos ipv4 com hits variavel de
+instancia @fff foi criada esta funcao apra manter a coerencia logica. um
+tipo de ficheiro, um tipo de parser, e um tipo de funcoes de retorno</p>
+          
+          
+
+          
+          <div class="method-source-code" id="get_firewall_detections-source">
+            <pre><span class="ruby-comment"># File log_analyzer.rb, line 222</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_firewall_detections</span> 
+  <span class="ruby-comment">#Debugger.debug(@detections,3) </span>
+  <span class="ruby-comment">#Debugger.debug(@country_code3,3)</span>
+  <span class="ruby-comment">#Debugger.debug(@country_code2,3) </span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@fff</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-insert_new_regexp_service" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">insert_new_regexp_service</span><span
+            class="method-args">(k,re)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Caso se pretenda introduzir uma nova expressao regular para executar a
+procura de IPs mais correctamente é necessario indicar o servico. Servico e
+expressao regular que detecta IPs estao sempre na mesma linha</p>
+
+<p>deteccao do ip <strong>EXEMPLO</strong></p>
+<ul><li>
+<p>l.insert_new_regexp_service(“ssh”,/ Failed password/) Servico a analisar
+ssh , expressao regular Failed password</p>
+</li><li>
+<p>l.insert_new_regexp_service(“XPTO”,/ TENTATIVA/) Servico a analisar XPTO ,
+expressao regular TENTATIVA</p>
+</li></ul>
+
+<p>O ficheiro a analisar contem o servico ssh e na linha que contem o texto
+<em>Failed Password</em> encontramos o ip O ficheiro a analisar contem o
+servico XPTO e na linha que contem o texto <em>TENTATIVA</em> encontramos o
+ip</p>
+          
+          
+
+          
+          <div class="method-source-code" id="insert_new_regexp_service-source">
+            <pre><span class="ruby-comment"># File log_analyzer.rb, line 198</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">insert_new_regexp_service</span>(<span class="ruby-identifier">k</span>,<span class="ruby-identifier">re</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span> <span class="ruby-ivar">@service_name_list</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">k</span>)
+    <span class="ruby-ivar">@service_name_list</span>.<span class="ruby-identifier">store</span>(<span class="ruby-identifier">k</span>,<span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>)
+    <span class="ruby-ivar">@detections</span>.<span class="ruby-identifier">store</span>(<span class="ruby-identifier">k</span>,<span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>)
+  <span class="ruby-keyword">end</span> 
+  <span class="ruby-ivar">@service_name_list</span>[<span class="ruby-identifier">k</span>]<span class="ruby-operator">&lt;&lt;</span><span class="ruby-identifier">re</span>
+  <span class="ruby-constant">Debugger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-string">&quot;Lista de nomes de servico&quot;</span>,<span class="ruby-value">2</span>)
+  <span class="ruby-constant">Debugger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-node">&quot;#{@service_name_list}&quot;</span>,<span class="ruby-value">2</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-parse_firewall_file" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">parse_firewall_file</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>A cada linha tenta faz o match para os servicos conhecidos.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="parse_firewall_file-source">
+            <pre><span class="ruby-comment"># File log_analyzer.rb, line 46</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_firewall_file</span>
+    <span class="ruby-ivar">@file</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">linha</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">firewall_parser</span>(<span class="ruby-identifier">linha</span>)
+    }
+  <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-parse_log_file" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">parse_log_file</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>A cada linha tenta faz o match para os servicos conhecidos.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="parse_log_file-source">
+            <pre><span class="ruby-comment"># File log_analyzer.rb, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_log_file</span>
+  <span class="ruby-ivar">@file</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">linha</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">service_parser</span>(<span class="ruby-identifier">linha</span>)
+  }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-service_parser" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">service_parser</span><span
+            class="method-args">(l)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Verifica se o conteudo da linha pertence a algum dos servicos a analizar Ao
+identificar um servico tenta localizar o ip da tentativa de intrusao. a
+identificacao do ip é com base na expressao regular do output do servico</p>
+          
+          
+
+          
+          <div class="method-source-code" id="service_parser-source">
+            <pre><span class="ruby-comment"># File log_analyzer.rb, line 57</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">service_parser</span>(<span class="ruby-identifier">l</span>)
+  <span class="ruby-ivar">@service_name_list</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">re</span> = <span class="ruby-node">/#{k}/</span> 
+    <span class="ruby-comment">#p l</span>
+    <span class="ruby-comment">#p re</span>
+    <span class="ruby-comment">#p l.match re</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">l</span>.<span class="ruby-identifier">match</span> <span class="ruby-identifier">re</span> <span class="ruby-comment">#faz match na linha e no servico a analisar (k)</span>
+      <span class="ruby-identifier">v</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">sre</span><span class="ruby-operator">|</span>
+              <span class="ruby-keyword">if</span> <span class="ruby-identifier">l</span>.<span class="ruby-identifier">match</span> <span class="ruby-identifier">sre</span>
+                <span class="ruby-identifier">ip_match</span>  = <span class="ruby-identifier">l</span>.<span class="ruby-identifier">match</span> <span class="ruby-regexp">/(\d+\.\d+\.\d+\.\d+)/</span>
+                <span class="ruby-identifier">time_match</span> = <span class="ruby-identifier">l</span>.<span class="ruby-identifier">match</span> <span class="ruby-regexp">/(\w{3}\s+\d{,2}\s+\d{2}:\d{2}:\d{2})/</span>
+                <span class="ruby-comment"># martelada que ha sistemas que em vez de apresentarem a data como 01 apresentam como 1 so com 1 digito</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">ip_match</span>
+                   <span class="ruby-constant">Debugger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-node">&quot;IP ENCONTRADO #{ip_match[1]}&quot;</span>,<span class="ruby-value">4</span>)
+                   <span class="ruby-constant">Debugger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-ivar">@geoip</span>.<span class="ruby-identifier">country</span>(<span class="ruby-node">&quot;#{ip_match[1]}&quot;</span>),<span class="ruby-value">4</span>)
+                   <span class="ruby-comment"># verifica se o ip se encontra na lista de ocorrencais e incrementa 1</span>
+                <span class="ruby-keyword">begin</span>
+                  <span class="ruby-identifier">iphash</span> = (<span class="ruby-ivar">@detections</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">k</span>))
+                  <span class="ruby-comment">#iphash[ip_match[1]]=iphash.fetch(ip_match[1])+1</span>
+                  <span class="ruby-keyword">begin</span>
+                  <span class="ruby-identifier">tmp_ip_time_hash</span> = <span class="ruby-identifier">iphash</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">ip_match</span>[<span class="ruby-value">1</span>])
+                  <span class="ruby-identifier">tmp_ip_time_hash</span>[<span class="ruby-string">'hits'</span>]=<span class="ruby-identifier">tmp_ip_time_hash</span>[<span class="ruby-string">'hits'</span>]<span class="ruby-operator">+</span><span class="ruby-value">1</span>
+                  <span class="ruby-identifier">tmp_ip_time_hash</span>[<span class="ruby-string">'when'</span>]=<span class="ruby-identifier">tmp_ip_time_hash</span>[<span class="ruby-string">'when'</span>]<span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">time_match</span> 
+               <span class="ruby-keyword">rescue</span> <span class="ruby-constant">KeyError</span>
+                  <span class="ruby-identifier">iphash</span>.<span class="ruby-identifier">store</span>(<span class="ruby-identifier">ip_match</span>[<span class="ruby-value">1</span>],{<span class="ruby-string">'hits'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value">1</span> , <span class="ruby-string">'when'</span>=<span class="ruby-operator">&gt;</span>[<span class="ruby-identifier">time_match</span>]})
+                <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">rescue</span> <span class="ruby-constant">KeyError</span>
+                  <span class="ruby-comment"># so executa quando o ip ainda n existe no HASH</span>
+                  (<span class="ruby-ivar">@detections</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">k</span>)).<span class="ruby-identifier">store</span>(<span class="ruby-identifier">ip_match</span>[<span class="ruby-value">1</span>],{<span class="ruby-string">'hits'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value">1</span> , <span class="ruby-string">'when'</span>=<span class="ruby-operator">&gt;</span>[<span class="ruby-identifier">time_match</span>]})
+                <span class="ruby-keyword">end</span>              
+                
+                <span class="ruby-keyword">begin</span>
+                  <span class="ruby-ivar">@country_code3</span>.<span class="ruby-identifier">store</span>(<span class="ruby-ivar">@geoip</span>.<span class="ruby-identifier">country</span>(<span class="ruby-node">&quot;#{ip_match[1]}&quot;</span>).<span class="ruby-identifier">country_code3</span>, <span class="ruby-ivar">@country_code3</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-ivar">@geoip</span>.<span class="ruby-identifier">country</span>(<span class="ruby-node">&quot;#{ip_match[1]}&quot;</span>).<span class="ruby-identifier">country_code3</span>) <span class="ruby-operator">+</span><span class="ruby-value">1</span> )
+                  <span class="ruby-ivar">@country_code2</span>.<span class="ruby-identifier">store</span>(<span class="ruby-ivar">@geoip</span>.<span class="ruby-identifier">country</span>(<span class="ruby-node">&quot;#{ip_match[1]}&quot;</span>).<span class="ruby-identifier">country_code2</span>, <span class="ruby-ivar">@country_code2</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-ivar">@geoip</span>.<span class="ruby-identifier">country</span>(<span class="ruby-node">&quot;#{ip_match[1]}&quot;</span>).<span class="ruby-identifier">country_code2</span>) <span class="ruby-operator">+</span><span class="ruby-value">1</span> )
+
+                <span class="ruby-keyword">rescue</span> <span class="ruby-constant">KeyError</span>
+                  <span class="ruby-ivar">@country_code3</span>.<span class="ruby-identifier">store</span>(<span class="ruby-ivar">@geoip</span>.<span class="ruby-identifier">country</span>(<span class="ruby-node">&quot;#{ip_match[1]}&quot;</span>).<span class="ruby-identifier">country_code3</span>,<span class="ruby-value">1</span>)
+                  <span class="ruby-ivar">@country_code2</span>.<span class="ruby-identifier">store</span>(<span class="ruby-ivar">@geoip</span>.<span class="ruby-identifier">country</span>(<span class="ruby-node">&quot;#{ip_match[1]}&quot;</span>).<span class="ruby-identifier">country_code2</span>,<span class="ruby-value">1</span>)
+               <span class="ruby-keyword">end</span>                   
+                <span class="ruby-keyword">end</span>
+              <span class="ruby-keyword">end</span>
+            }
+    <span class="ruby-keyword">end</span>
+    
+     }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-services" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">services</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Hash com os servicos do ponto de vista para criar uma aplicacao mais
+dinamica é construido um Hash em que a chave é o servico e o conteudo é um
+array de expressoes regulares que detetem a intrusao ou tentativa de
+intrusao no servico</p>
+          
+          
+
+          
+          <div class="method-source-code" id="services-source">
+            <pre><span class="ruby-comment"># File log_analyzer.rb, line 177</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">services</span>
+  <span class="ruby-ivar">@service_name_list</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-comment"># @service_name_list = {</span>
+  <span class="ruby-comment">#    &quot;ssh&quot;=&gt;Array.new </span>
+  <span class="ruby-comment">#    }</span>
+  <span class="ruby-ivar">@detections</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-comment"># @detections = {</span>
+  <span class="ruby-comment">#    &quot;ssh&quot; =&gt; Hash.new</span>
+  <span class="ruby-comment">#  }    </span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.2.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

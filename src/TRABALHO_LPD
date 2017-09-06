@@ -1,0 +1,4 @@
+#!/bin/bash
+
+sudo /usr/bin/ruby2.1  Program.rb
+

@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Program - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-get_single_char">#get_single_char</a>
+    
+    <li ><a href="#method-i-input_length_check">#input_length_check</a>
+    
+    <li ><a href="#method-i-run">#run</a>
+    
+    <li ><a href="#method-i-start_menu">#start_menu</a>
+    
+    <li ><a href="#method-i-user_check">#user_check</a>
+    
+    <li ><a href="#method-i-user_menu">#user_menu</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Program">
+  <h1 id="class-Program" class="class">
+    class Program
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Program.rb, line 12</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-get_single_char" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_single_char</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Funcao para ler um char do teclado e retornar imediatamente</p>
+          
+          
+
+          
+          <div class="method-source-code" id="get_single_char-source">
+            <pre><span class="ruby-comment"># File Program.rb, line 18</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_single_char</span>
+  <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;&gt; &quot;</span>
+  <span class="ruby-identifier">tty_param</span> = <span class="ruby-value">%x`stty -g`</span>
+  <span class="ruby-identifier">system</span> <span class="ruby-string">'stty raw'</span>
+  <span class="ruby-identifier">input_single_char</span> = <span class="ruby-constant">IO</span>.<span class="ruby-identifier">read</span> <span class="ruby-string">'/dev/stdin'</span>, <span class="ruby-value">1</span>
+  <span class="ruby-identifier">system</span> <span class="ruby-node">&quot;stty #{tty_param}&quot;</span>
+<span class="ruby-comment">#  print &quot;#{input_single_char}\n&quot;</span>
+
+<span class="ruby-keyword">return</span> <span class="ruby-identifier">input_single_char</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-input_length_check" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">input_length_check</span><span
+            class="method-args">(input,message)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="input_length_check-source">
+            <pre><span class="ruby-comment"># File Program.rb, line 37</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">input_length_check</span>(<span class="ruby-identifier">input</span>,<span class="ruby-identifier">message</span>)
+  (<span class="ruby-identifier">printf</span>(<span class="ruby-node">&quot;\n#{message}\n&quot;</span>) ; <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;\n#{message} \n&quot;</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">input</span>.<span class="ruby-identifier">size</span><span class="ruby-operator">&lt;</span><span class="ruby-value">4</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-run" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">run</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="run-source">
+            <pre><span class="ruby-comment"># File Program.rb, line 275</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">run</span>
+
+<span class="ruby-ivar">@report_location</span> = <span class="ruby-string">&quot;report&quot;</span>
+<span class="ruby-ivar">@database_location</span> = <span class="ruby-node">&quot;#{@report_location}/database&quot;</span>
+<span class="ruby-ivar">@csv_location</span> = <span class="ruby-node">&quot;#{@report_location}/csv&quot;</span>
+<span class="ruby-ivar">@images_location</span> = <span class="ruby-node">&quot;#{@report_location}/images&quot;</span>
+<span class="ruby-ivar">@logs_location</span> = <span class="ruby-node">&quot;#{@report_location}/logs&quot;</span>
+
+<span class="ruby-keyword">while</span> <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">begin</span>  
+<span class="ruby-identifier">start_menu</span>
+<span class="ruby-keyword">case</span> <span class="ruby-identifier">get_single_char</span>
+<span class="ruby-keyword">when</span> <span class="ruby-string">'1'</span>
+  <span class="ruby-comment">#cria o utilizador</span>
+  <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;\nInsert desired user name: &quot;</span>
+  <span class="ruby-identifier">user</span> = <span class="ruby-identifier">gets</span>
+  (<span class="ruby-identifier">printf</span>(<span class="ruby-string">&quot;\nUser name must be &gt; 3 chars\n&quot;</span>) ; <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;\nError must be  &gt; 3 chars\n&quot;</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">size</span><span class="ruby-operator">&lt;</span><span class="ruby-value">4</span>
+  <span class="ruby-identifier">user</span>[<span class="ruby-value">-1</span>]=<span class="ruby-string">''</span>
+  <span class="ruby-identifier">printf</span> <span class="ruby-node">&quot;\nA checking user availability: #{user}\n&quot;</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-node">&quot;#{@database_location}/#{user}.db&quot;</span>)
+    <span class="ruby-identifier">printf</span> <span class="ruby-node">&quot;\nInserting user: #{user}\n&quot;</span>
+    <span class="ruby-identifier">d</span> = <span class="ruby-constant">Sql_Reader_Writer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;#{user}&quot;</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">check_user</span>(<span class="ruby-identifier">user</span>)
+      <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;Building workpath&quot;</span>
+      <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">mkdir</span>(<span class="ruby-node">&quot;#{@csv_location}/#{user}&quot;</span>)
+      <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">mkdir</span>(<span class="ruby-node">&quot;#{@images_location}/#{user}&quot;</span>)   
+      <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">mkdir</span>(<span class="ruby-node">&quot;#{@logs_location}/#{user}&quot;</span>)   
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">else</span>
+     <span class="ruby-identifier">printf</span> <span class="ruby-node">&quot;\nO User already exists : #{user}\n&quot;</span> 
+     <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;\n ### Error creating user #{user} ### \n&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">when</span> <span class="ruby-string">'2'</span>
+  <span class="ruby-comment">#efectua o login</span>
+  <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;\nLogin:&quot;</span>
+  <span class="ruby-identifier">user</span> =  <span class="ruby-identifier">gets</span>
+  
+  <span class="ruby-identifier">user_check</span>(<span class="ruby-identifier">user</span>)
+  <span class="ruby-identifier">user</span>[<span class="ruby-value">-1</span>]=<span class="ruby-string">''</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-node">&quot;#{@database_location}/#{user}.db&quot;</span>)
+    <span class="ruby-comment">#verifica a password</span>
+      <span class="ruby-identifier">d</span> = <span class="ruby-constant">Sql_Reader_Writer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;#{user}&quot;</span>) 
+         <span class="ruby-identifier">user_menu</span>(<span class="ruby-identifier">user</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">check_user_password</span>(<span class="ruby-node">&quot;#{user}&quot;</span>)     
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">printf</span><span class="ruby-node">&quot;No user with username: #{user}&quot;</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">'3'</span>
+    <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;\nUser to delete: &quot;</span>
+    <span class="ruby-identifier">user</span>  =  <span class="ruby-identifier">gets</span>
+    <span class="ruby-identifier">user</span>[<span class="ruby-value">-1</span>]=<span class="ruby-string">&quot;&quot;</span>
+    <span class="ruby-identifier">user_check</span>(<span class="ruby-identifier">user</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-node">&quot;#{@database_location}/#{user}.db&quot;</span>)
+     <span class="ruby-comment">#verifica a password</span>
+       <span class="ruby-identifier">d</span> = <span class="ruby-constant">Sql_Reader_Writer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;#{user}&quot;</span>) 
+      <span class="ruby-keyword">begin</span>  
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">check_user_password</span>(<span class="ruby-node">&quot;#{user}&quot;</span>)
+          <span class="ruby-identifier">d</span>.<span class="ruby-identifier">delete_user_login</span>(<span class="ruby-identifier">user</span>);
+          <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">rm_rf</span>(<span class="ruby-node">&quot;report/csv/#{user}&quot;</span>) ;
+          <span class="ruby-constant">File</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-node">&quot;report/database/#{user}.db&quot;</span>);
+          <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">rm_rf</span>(<span class="ruby-node">&quot;report/images/#{user}&quot;</span>) ;
+          <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">rm_rf</span>(<span class="ruby-node">&quot;report/logs/#{user}&quot;</span>)      
+         <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">e</span>
+        <span class="ruby-comment">#p e </span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;\ndone\n&quot;</span>
+      <span class="ruby-keyword">else</span>
+       <span class="ruby-identifier">printf</span><span class="ruby-node">&quot;No user with username: #{user}&quot;</span>
+     <span class="ruby-keyword">end</span>
+      
+<span class="ruby-keyword">when</span> <span class="ruby-string">'0'</span>
+  <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;exiting&quot;</span>
+  <span class="ruby-identifier">exit</span>
+<span class="ruby-keyword">end</span>
+<span class="ruby-keyword">rescue</span>
+<span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-start_menu" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">start_menu</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Desenho do menu de login</p>
+          
+          
+
+          
+          <div class="method-source-code" id="start_menu-source">
+            <pre><span class="ruby-comment"># File Program.rb, line 45</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">start_menu</span>
+  <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;\nPrograma para a disciplina de LPD\n&quot;</span>
+  <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;Choose one option\n&quot;</span>
+  <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;------------------------------------\n&quot;</span>
+  <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;1) Insert user\n&quot;</span>
+  <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;2) Login user\n&quot;</span>
+  <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;3) Delete user\n&quot;</span>
+  <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;0) Exit\n&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-user_check" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">user_check</span><span
+            class="method-args">(_user)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>verifica a condicao obrigatoria para ser user</p>
+          
+          
+
+          
+          <div class="method-source-code" id="user_check-source">
+            <pre><span class="ruby-comment"># File Program.rb, line 33</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">user_check</span>(<span class="ruby-identifier">_user</span>)
+  (<span class="ruby-identifier">printf</span>(<span class="ruby-string">&quot;\nUser must be &gt; 3 chars\n&quot;</span>) ; <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;\nErro no nome de utilizador tem de conter &gt; 3 chars\n&quot;</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">_user</span>.<span class="ruby-identifier">size</span><span class="ruby-operator">&lt;</span><span class="ruby-value">4</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-user_menu" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">user_menu</span><span
+            class="method-args">(user)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>desenho do user menu Cada opcao do menu instancia uma classe que pretende
+executar o descrito.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="user_menu-source">
+            <pre><span class="ruby-comment"># File Program.rb, line 60</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">user_menu</span>(<span class="ruby-identifier">user</span>)
+  <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;\Logged in\n&quot;</span>
+<span class="ruby-keyword">while</span> <span class="ruby-keyword">true</span>
+  <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;Choose one option\n&quot;</span>
+  <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;------------------------------------\n&quot;</span>
+  <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;1) Scan open ports on address\n&quot;</span>
+  <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;2) Sniff network interfaces \n&quot;</span>
+  <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;3) Show local tcp socket state\n&quot;</span>
+  <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;4) Build CSV from LOG\n&quot;</span>
+  <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;5) Build PDF \n&quot;</span>
+  <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;6) Store cap in sqlite \n&quot;</span>
+  <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;7) Dump cap from sqlite to csv\n&quot;</span>
+  <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;8) Store service log or fw log in sqlite\n&quot;</span>
+  <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;9) Dump service log or fw log from sqlite in csv\n&quot;</span>
+  <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;0) Exit\n&quot;</span>
+  <span class="ruby-identifier">printf</span> <span class="ruby-node">&quot;(user_menu) #{user} &gt;&quot;</span>
+  <span class="ruby-identifier">c</span> = <span class="ruby-identifier">get_single_char</span>
+<span class="ruby-comment">#  p c</span>
+ 
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">c</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">'1'</span>
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-identifier">require</span> <span class="ruby-string">'./MachineScan.rb'</span>
+    <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;\nInput the address to portscan (ex: www.sapo.pt ) (ex: 192.168.0.251): &quot;</span>
+    <span class="ruby-identifier">address</span> = <span class="ruby-identifier">gets</span>
+    <span class="ruby-identifier">address</span>[<span class="ruby-value">-1</span>]=<span class="ruby-string">''</span>
+    <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;\nPlease input start port:&quot;</span>
+    <span class="ruby-identifier">start_port</span> = <span class="ruby-identifier">gets</span>
+    <span class="ruby-identifier">start_port</span>[<span class="ruby-value">-1</span>]=<span class="ruby-string">''</span>
+    <span class="ruby-identifier">start_port</span> = <span class="ruby-identifier">start_port</span>.<span class="ruby-identifier">to_i</span>
+    <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;\nPlease input end port:&quot;</span>  
+    <span class="ruby-identifier">end_port</span> = <span class="ruby-identifier">gets</span>
+    <span class="ruby-identifier">end_port</span>[<span class="ruby-value">-1</span>]=<span class="ruby-string">''</span>
+    <span class="ruby-identifier">end_port</span> = <span class="ruby-identifier">end_port</span>.<span class="ruby-identifier">to_i</span>
+    <span class="ruby-identifier">printf</span><span class="ruby-string">&quot;\n&quot;</span>
+    (<span class="ruby-identifier">tmp_port</span> = <span class="ruby-identifier">start_port</span> ; <span class="ruby-identifier">start_port</span> = <span class="ruby-identifier">end_port</span> ; <span class="ruby-identifier">start_port</span> = <span class="ruby-identifier">tmp_port</span> )<span class="ruby-keyword">if</span> <span class="ruby-identifier">start_port</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">end_port</span>      
+    <span class="ruby-identifier">start_port</span> = <span class="ruby-value">1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">start_port</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">1</span>
+    <span class="ruby-identifier">end_port</span> = <span class="ruby-value">1024</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">end_port</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">1</span>  
+    <span class="ruby-identifier">m</span> = <span class="ruby-constant">MachineScan</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;#{address}&quot;</span>,<span class="ruby-identifier">start_port</span>,<span class="ruby-identifier">end_port</span>)
+     <span class="ruby-identifier">printf</span> <span class="ruby-node">&quot;Searching open ports in #{address}\n&quot;</span>
+     <span class="ruby-identifier">m</span>.<span class="ruby-identifier">run</span>
+     <span class="ruby-identifier">m</span>.<span class="ruby-identifier">get_report</span>   
+      <span class="ruby-comment"># call_portscaner</span>
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;call_portscaner #{e} &quot;</span>
+  <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">'2'</span>
+      <span class="ruby-identifier">require</span> <span class="ruby-string">'./Csv_writer.rb'</span>
+      <span class="ruby-identifier">require</span> <span class="ruby-string">'./Sniffer.rb'</span>
+      <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;\n Number of seconds to sniff : &quot;</span>
+      <span class="ruby-identifier">num_seconds</span> = <span class="ruby-identifier">gets</span>
+      <span class="ruby-identifier">num_seconds</span>[<span class="ruby-value">-1</span>]=<span class="ruby-string">''</span>
+      <span class="ruby-identifier">num_seconds</span> = <span class="ruby-identifier">num_seconds</span>.<span class="ruby-identifier">to_i</span>
+      
+      <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;\n Max packects in capture : &quot;</span>
+      <span class="ruby-identifier">max_pkt</span> = <span class="ruby-identifier">gets</span>
+      <span class="ruby-identifier">max_pkt</span>[<span class="ruby-value">-1</span>]=<span class="ruby-string">''</span>
+      <span class="ruby-identifier">max_pkt</span> = <span class="ruby-identifier">max_pkt</span>.<span class="ruby-identifier">to_i</span>  
+      
+      <span class="ruby-identifier">max_pkt</span> = <span class="ruby-value">1000</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">max_pkt</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">1</span>
+      <span class="ruby-identifier">num_seconds</span> = <span class="ruby-value">10</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">num_seconds</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">1</span>
+      
+      <span class="ruby-identifier">csv</span> = <span class="ruby-constant">Csv_writer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">user</span>)
+      <span class="ruby-identifier">s</span> = <span class="ruby-constant">Sniffer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">max_pkt</span>,<span class="ruby-identifier">num_seconds</span>)
+      <span class="ruby-identifier">s</span>.<span class="ruby-identifier">run</span>
+      <span class="ruby-comment">#p s.pcap_array_format</span>
+      <span class="ruby-identifier">csv</span>.<span class="ruby-identifier">pcap_writer_array</span>(<span class="ruby-identifier">s</span>.<span class="ruby-identifier">pcap_array_format</span>)
+      <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;Pcap writen\n&quot;</span>
+    <span class="ruby-keyword">when</span><span class="ruby-string">'3'</span>
+    <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;\nShowing local tcp socket state:\n &quot;</span>
+    <span class="ruby-identifier">system</span>(<span class="ruby-string">'ss -tn'</span>)
+    <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;\n\n &quot;</span>
+    <span class="ruby-keyword">when</span><span class="ruby-string">'4'</span>
+          <span class="ruby-comment"># BUILD CSV FROM LOG FILE</span>
+      <span class="ruby-keyword">begin</span>
+          <span class="ruby-identifier">require</span> <span class="ruby-string">'./log_analyzer.rb'</span>
+          <span class="ruby-identifier">printf</span> <span class="ruby-node">&quot;\nInput filepath to process ( #{@logs_location}/#{user}/auth.log ) : &quot;</span>
+          <span class="ruby-identifier">log_file_path</span> = <span class="ruby-identifier">gets</span>
+          <span class="ruby-identifier">log_file_path</span>[<span class="ruby-value">-1</span>]=<span class="ruby-string">''</span>
+          (<span class="ruby-identifier">log_file_path</span> = <span class="ruby-node">&quot;#{@logs_location}/#{user}/auth.log&quot;</span> )<span class="ruby-keyword">if</span> <span class="ruby-identifier">log_file_path</span> <span class="ruby-operator">==</span> <span class="ruby-string">''</span>       
+          <span class="ruby-identifier">input_length_check</span>(<span class="ruby-identifier">log_file_path</span>,<span class="ruby-string">&quot;The path must be &gt; 3 chars&quot;</span>)
+          (<span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;#{log_file_path} does not exist:\n&quot;</span>) <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-node">&quot;#{log_file_path}&quot;</span>)
+          <span class="ruby-identifier">printf</span>(<span class="ruby-string">&quot;\n The file is type LOG or type UFW\n&quot;</span>)
+            <span class="ruby-identifier">printf</span>(<span class="ruby-string">&quot;Press A for type LOG\n&quot;</span>)
+            <span class="ruby-identifier">printf</span>(<span class="ruby-string">&quot;Press B for type UFW\n&quot;</span>)
+            <span class="ruby-identifier">c</span> = <span class="ruby-identifier">get_single_char</span>()
+          <span class="ruby-keyword">while</span>( <span class="ruby-identifier">c</span> <span class="ruby-operator">!=</span> <span class="ruby-string">'A'</span>  <span class="ruby-operator">&amp;&amp;</span>  <span class="ruby-identifier">c</span> <span class="ruby-operator">!=</span> <span class="ruby-string">'B'</span> )
+            <span class="ruby-identifier">printf</span>(<span class="ruby-string">&quot;\nPress A for type LOG\n&quot;</span>)
+            <span class="ruby-identifier">printf</span>(<span class="ruby-string">&quot;Press B for type UFW\n&quot;</span>)
+            <span class="ruby-identifier">c</span> = <span class="ruby-identifier">get_single_char</span>()
+          <span class="ruby-keyword">end</span>
+          
+           <span class="ruby-keyword">case</span> <span class="ruby-identifier">c</span>
+           <span class="ruby-keyword">when</span> <span class="ruby-string">'A'</span>
+             <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;\nBuild CSV for SERVICE LOG FILE&quot;</span>
+             <span class="ruby-identifier">l</span> = <span class="ruby-constant">Log_analyzer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;#{log_file_path}&quot;</span>,<span class="ruby-value">1</span>)
+             <span class="ruby-identifier">l</span>.<span class="ruby-identifier">services</span>()
+             <span class="ruby-identifier">l</span>.<span class="ruby-identifier">insert_new_regexp_service</span>(<span class="ruby-string">&quot;ssh&quot;</span>,<span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">'Failed password'</span>,<span class="ruby-constant">Regexp</span><span class="ruby-operator">::</span><span class="ruby-constant">IGNORECASE</span>))
+             
+             <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;\n Do you want to parse another service (ssh is always parsed): Y/N&quot;</span>
+             <span class="ruby-identifier">c</span> = <span class="ruby-identifier">get_single_char</span>()
+           <span class="ruby-keyword">while</span> <span class="ruby-identifier">c</span> <span class="ruby-operator">!=</span> <span class="ruby-string">'N'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">c</span> <span class="ruby-operator">!=</span> <span class="ruby-string">'n'</span> 
+             <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;\n Please insert service to parse (ssh is always parsed): &quot;</span>
+              <span class="ruby-identifier">service_to_parse</span> = <span class="ruby-identifier">gets</span>
+              <span class="ruby-identifier">service_to_parse</span>[<span class="ruby-value">-1</span>]=<span class="ruby-string">''</span>
+             
+             <span class="ruby-keyword">if</span> <span class="ruby-identifier">service_to_parse</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;&quot;</span>
+               <span class="ruby-identifier">printf</span> <span class="ruby-node">&quot;\n Please insert expression to parse in service #{service_to_parse}: &quot;</span>
+               <span class="ruby-identifier">expression_to_parse</span> = <span class="ruby-identifier">gets</span>
+               <span class="ruby-identifier">expression_to_parse</span>[<span class="ruby-value">-1</span>]=<span class="ruby-string">''</span>
+              
+                <span class="ruby-keyword">while</span> <span class="ruby-identifier">expression_to_parse</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;&quot;</span>
+                  <span class="ruby-identifier">printf</span> <span class="ruby-node">&quot;\n Please insert expression to parse in service #{service_to_parse}: &quot;</span>
+                  <span class="ruby-identifier">expression_to_parse</span> = <span class="ruby-identifier">gets</span>
+                  <span class="ruby-identifier">expression_to_parse</span>[<span class="ruby-value">-1</span>]=<span class="ruby-string">''</span>
+                <span class="ruby-keyword">end</span>
+             <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;service cant be empty\n&quot;</span>
+                  
+             <span class="ruby-keyword">end</span>
+             <span class="ruby-identifier">l</span>.<span class="ruby-identifier">insert_new_regexp_service</span>(<span class="ruby-node">&quot;#{service_to_parse}&quot;</span>,<span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;#{expression_to_parse}&quot;</span>,<span class="ruby-constant">Regexp</span><span class="ruby-operator">::</span><span class="ruby-constant">IGNORECASE</span>))  
+             <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;\n Do you want to parse another service (ssh is always parsed): Y/N&quot;</span>
+             <span class="ruby-identifier">c</span> =  <span class="ruby-identifier">get_single_char</span>()                        
+           <span class="ruby-keyword">end</span> 
+             <span class="ruby-comment">#l.insert_new_regexp_service(&quot;cron&quot;,/ Failed password/)</span>
+             <span class="ruby-identifier">l</span>.<span class="ruby-identifier">parse_log_file</span>()
+             <span class="ruby-identifier">require</span> <span class="ruby-string">'./Csv_writer.rb'</span>
+             <span class="ruby-identifier">csv</span> = <span class="ruby-constant">Csv_writer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">user</span>,<span class="ruby-value">1</span>)
+             <span class="ruby-identifier">csv</span>.<span class="ruby-identifier">detections</span>(<span class="ruby-identifier">l</span>.<span class="ruby-identifier">get_detections</span>)
+             <span class="ruby-identifier">printf</span> <span class="ruby-node">&quot;\nCSV written in #{@csv_location}/#{user}\n&quot;</span>                          
+           <span class="ruby-keyword">when</span> <span class="ruby-string">'B'</span>
+             <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;\nBuild CSV for UFW LOG FILE&quot;</span>
+             <span class="ruby-identifier">ll</span> = <span class="ruby-constant">Log_analyzer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;#{log_file_path}&quot;</span>,<span class="ruby-value">1</span>)
+             <span class="ruby-identifier">ll</span>.<span class="ruby-identifier">services</span>()
+             <span class="ruby-identifier">ll</span>.<span class="ruby-identifier">insert_new_regexp_service</span>(<span class="ruby-string">&quot;UFW&quot;</span>,<span class="ruby-regexp">/ BLOCK/</span>)
+             <span class="ruby-identifier">ll</span>.<span class="ruby-identifier">parse_firewall_file</span>()
+             <span class="ruby-identifier">require</span> <span class="ruby-string">'./Csv_writer.rb'</span>
+             <span class="ruby-identifier">csv</span> = <span class="ruby-constant">Csv_writer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">user</span>,<span class="ruby-value">1</span>)
+             <span class="ruby-identifier">f_h</span> = <span class="ruby-identifier">ll</span>.<span class="ruby-identifier">get_firewall_detections</span>
+             <span class="ruby-identifier">csv</span>.<span class="ruby-identifier">detections</span>(<span class="ruby-identifier">f_h</span>.<span class="ruby-identifier">first</span>[<span class="ruby-value">1</span>])
+             <span class="ruby-identifier">printf</span> <span class="ruby-node">&quot;\nCSV written in #{@csv_location}/#{user}\n&quot;</span>               
+          <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span><span class="ruby-identifier">e</span>
+        <span class="ruby-identifier">printf</span> <span class="ruby-node">&quot;#{e}&quot;</span>
+      <span class="ruby-keyword">end</span> 
+     <span class="ruby-keyword">when</span> <span class="ruby-string">'5'</span>
+      <span class="ruby-keyword">begin</span>
+        <span class="ruby-identifier">not_empty</span> = <span class="ruby-keyword">false</span>
+        <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">foreach</span>(<span class="ruby-node">&quot;#{@csv_location}/#{user}/&quot;</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">elem</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">em</span> = <span class="ruby-identifier">elem</span>.<span class="ruby-identifier">match</span> <span class="ruby-regexp">/(.+).csv/</span>
+          <span class="ruby-keyword">if</span> <span class="ruby-identifier">em</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+            <span class="ruby-identifier">not_empty</span> = <span class="ruby-keyword">true</span>
+          <span class="ruby-keyword">end</span>
+        }
+        (<span class="ruby-identifier">raise</span> <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;\nNot one CSV found, please use option 4 for building csv before building the PDF\n&quot;</span>) <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">not_empty</span>
+        
+        <span class="ruby-identifier">printf</span> <span class="ruby-node">&quot;\nInput PDF filename (/tmp/#{user}-report.pdf): &quot;</span>
+        <span class="ruby-identifier">pdf_file_path</span> = <span class="ruby-identifier">gets</span>
+        <span class="ruby-identifier">pdf_file_path</span>[<span class="ruby-value">-1</span>]=<span class="ruby-string">''</span>
+        (<span class="ruby-identifier">pdf_file_path</span> = <span class="ruby-node">&quot;/tmp/#{user}-report.pdf&quot;</span> )<span class="ruby-keyword">if</span> <span class="ruby-identifier">pdf_file_path</span> <span class="ruby-operator">==</span> <span class="ruby-string">''</span>       
+        <span class="ruby-identifier">input_length_check</span>(<span class="ruby-identifier">pdf_file_path</span>,<span class="ruby-string">&quot;The path must be &gt; 3 chars&quot;</span>)
+       
+        
+      <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;\nBaking PDF\n&quot;</span>
+      <span class="ruby-comment">#####</span>
+      <span class="ruby-identifier">require</span> <span class="ruby-string">'./Pdf_report.rb'</span>
+        <span class="ruby-identifier">p</span> = <span class="ruby-constant">Pdf_report</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;#{pdf_file_path}&quot;</span>,<span class="ruby-node">&quot;#{user}&quot;</span>)
+        <span class="ruby-identifier">p</span>.<span class="ruby-identifier">get_services</span>
+        <span class="ruby-identifier">p</span>.<span class="ruby-identifier">start_document</span>()
+        <span class="ruby-identifier">p</span>.<span class="ruby-identifier">writer_all_log</span>
+        <span class="ruby-identifier">p</span>.<span class="ruby-identifier">writer_by_date</span>
+        <span class="ruby-identifier">p</span>.<span class="ruby-identifier">do_pdf_file</span>
+      <span class="ruby-comment">#####</span>
+      <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;\nPDF cooked\n&quot;</span>
+    <span class="ruby-comment"># call log analizer</span>
+      <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span>=<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+        <span class="ruby-identifier">p</span> <span class="ruby-identifier">e</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-string">'6'</span>           
+       <span class="ruby-keyword">begin</span>
+         <span class="ruby-identifier">printf</span><span class="ruby-node">&quot;\nStoring cap file #{user}\n&quot;</span>
+         <span class="ruby-identifier">s3</span> = <span class="ruby-constant">Sql_Reader_Writer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">user</span>)
+         <span class="ruby-identifier">s3</span>.<span class="ruby-identifier">csv_cap_to_sql</span>()
+       <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exceptio</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+         <span class="ruby-identifier">p</span> <span class="ruby-identifier">e</span>
+       <span class="ruby-keyword">end</span>
+       <span class="ruby-keyword">when</span> <span class="ruby-string">'7'</span>
+        <span class="ruby-identifier">printf</span><span class="ruby-node">&quot;\n From sql cap to csv file #{user}\n&quot;</span>
+        <span class="ruby-identifier">s3</span> = <span class="ruby-constant">Sql_Reader_Writer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">user</span>)
+        <span class="ruby-identifier">s3</span>.<span class="ruby-identifier">sql_to_cap_csv</span>()
+      <span class="ruby-keyword">when</span> <span class="ruby-string">'8'</span>
+        <span class="ruby-identifier">printf</span><span class="ruby-node">&quot;\n From csv file to sql #{user}\n&quot;</span>
+        <span class="ruby-identifier">s3</span> = <span class="ruby-constant">Sql_Reader_Writer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">user</span>)
+        <span class="ruby-identifier">s3</span>.<span class="ruby-identifier">service_csv_to_sql</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-string">'9'</span>
+        <span class="ruby-keyword">begin</span> 
+       
+        <span class="ruby-identifier">s9</span> = <span class="ruby-constant">Sql_Reader_Writer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">user</span>)
+        <span class="ruby-identifier">s9</span>.<span class="ruby-identifier">sql_to_csv_service</span>(<span class="ruby-identifier">user</span>)
+        <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+          <span class="ruby-identifier">p</span> <span class="ruby-identifier">e</span>      
+        <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">'0'</span>
+    <span class="ruby-keyword">return</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.2.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Csv_writer - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-detections">#detections</a>
+    
+    <li ><a href="#method-i-pcap_writer">#pcap_writer</a>
+    
+    <li ><a href="#method-i-pcap_writer_array">#pcap_writer_array</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Csv_writer">
+  <h1 id="class-Csv_writer" class="class">
+    class Csv_writer
+  </h1>
+
+  <section class="description">
+    
+<p>apagar os csv q estao nas directorias</p>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(user, debug_level=0)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Csv_writer.rb, line 15</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">debug_level</span>=<span class="ruby-value">0</span>)
+  <span class="ruby-constant">Debugger</span>.<span class="ruby-identifier">set_level</span>(<span class="ruby-identifier">debug_level</span>)
+  <span class="ruby-ivar">@user</span> = <span class="ruby-identifier">user</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-detections" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">detections</span><span
+            class="method-args">(det)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Recebe uma hash e imprime para CSV FORMATO HASH  { “ssh”=&gt;{</p>
+
+<pre>&quot;177.154.231.59&quot;=&gt;
+                   { 
+                     &quot;hits&quot;=&gt;2, 
+                     &quot;when&quot;=&gt; [ #&lt;MatchData &quot;Feb 22 07:13:03&quot; 1:&quot;Feb 22 07:13:03&quot;&gt;, #&lt;MatchData &quot;Feb 22 08:06:27&quot; 1:&quot;Feb 22 08:06:27&quot;&gt; ]
+                   }</pre>
+
+<p>}</p>
+          
+          
+
+          
+          <div class="method-source-code" id="detections-source">
+            <pre><span class="ruby-comment"># File Csv_writer.rb, line 60</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">detections</span>(<span class="ruby-identifier">det</span>)
+  <span class="ruby-keyword">begin</span>
+   
+    <span class="ruby-comment">#File.open(&quot;report/csv/#{@user}/detections.csv&quot;){|f| p f }</span>
+      <span class="ruby-comment"># abre o ficheiro com nome do protocolo</span>
+    <span class="ruby-constant">Debugger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-string">&quot;\nSumario de deteccoes:\n&quot;</span>,<span class="ruby-value">1</span>)
+    <span class="ruby-constant">Debugger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-node">&quot;\n#####################\n\n&quot;</span>,<span class="ruby-value">1</span>)
+    
+    <span class="ruby-identifier">det</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> 
+      <span class="ruby-comment">#File::CREAT|File::TRUNC|File::RDWR, 0644</span>
+                    <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;report/csv/#{@user}/#{k}.csv&quot;</span>,<span class="ruby-identifier">mode</span>=<span class="ruby-string">&quot;a+&quot;</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> 
+                                                                                                            <span class="ruby-identifier">v</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">kk</span>,<span class="ruby-identifier">vv</span><span class="ruby-operator">|</span> 
+                                                                                                                            <span class="ruby-identifier">vv</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">kkk</span>,<span class="ruby-identifier">vvv</span> <span class="ruby-operator">|</span> 
+                                                                                                                                                <span class="ruby-keyword">if</span> <span class="ruby-node">&quot;#{kkk}&quot;</span><span class="ruby-operator">==</span><span class="ruby-string">&quot;hits&quot;</span> <span class="ruby-keyword">then</span> 
+                                                                                                                                                  <span class="ruby-constant">Debugger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-node">&quot;#{kk} : #{kkk} = #{vvv}\n&quot;</span>,<span class="ruby-value">1</span>) 
+                                                                                                                                                <span class="ruby-keyword">else</span> <span class="ruby-identifier">vvv</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">el</span><span class="ruby-operator">|</span> 
+                                                                                                                                                      <span class="ruby-identifier">f</span>.<span class="ruby-identifier">write</span>(<span class="ruby-node">&quot;'#{kk}';'#{el}'\n&quot;</span>)
+                                                                                                                                                        } 
+                                                                                                                                                <span class="ruby-keyword">end</span>
+                                                                                                                                  }
+                                                                                                                  }
+                                                                                                       }
+             }
+  
+  <span class="ruby-keyword">ensure</span>
+  <span class="ruby-constant">Debugger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-node">&quot;\n#####################\n&quot;</span>,<span class="ruby-value">1</span>)
+    <span class="ruby-comment">#_myfile.close</span>
+  <span class="ruby-keyword">end</span>
+  
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-pcap_writer" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">pcap_writer</span><span
+            class="method-args">(pcap_hash_format)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>ESCREVE EM FORMATO CSV MAS COM UM CAMPO ExTRA</p>
+          
+          
+
+          
+          <div class="method-source-code" id="pcap_writer-source">
+            <pre><span class="ruby-comment"># File Csv_writer.rb, line 26</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">pcap_writer</span>(<span class="ruby-identifier">pcap_hash_format</span>)
+  <span class="ruby-identifier">pcap_hash_format</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">port</span>,<span class="ruby-identifier">src_dest_ip_array</span><span class="ruby-operator">|</span>
+   <span class="ruby-comment"># Debugger.debug(&quot;port_detected:#{port} #{src_dest_ip_array}\n&quot;,1)</span>
+    <span class="ruby-identifier">capture_number</span>=<span class="ruby-value">1</span>
+    <span class="ruby-identifier">src_dest_ip_array</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">element</span><span class="ruby-operator">|</span> 
+        <span class="ruby-comment">#csv_line = &quot;'#{capture_number}';'#{port}';'#{element.fetch(&quot;src_ip&quot;)}';'#{element.fetch(&quot;dst_ip&quot;)}';'#{element.fetch(&quot;data&quot;)}'\n&quot;</span>
+        <span class="ruby-identifier">csv_line</span> = <span class="ruby-node">&quot;'#{capture_number}';'#{port}';'#{element.fetch(&quot;src_ip&quot;)}';'#{element.fetch(&quot;dst_ip&quot;)}';'#{element.fetch(&quot;data&quot;)}'\n&quot;</span>
+
+        <span class="ruby-constant">Debugger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-identifier">csv_line</span>,<span class="ruby-value">0</span>)
+      <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;report/csv/#{@user}/#{port}.cap&quot;</span>,<span class="ruby-identifier">mode</span>=<span class="ruby-string">&quot;a+&quot;</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">csv_line</span>)}
+      <span class="ruby-identifier">capture_number</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>
+    }
+  }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-pcap_writer_array" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">pcap_writer_array</span><span
+            class="method-args">(pkt_array)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="pcap_writer_array-source">
+            <pre><span class="ruby-comment"># File Csv_writer.rb, line 41</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">pcap_writer_array</span>(<span class="ruby-identifier">pkt_array</span>)   
+  <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;report/csv/#{@user}/capture.cap&quot;</span>,<span class="ruby-identifier">mode</span>=<span class="ruby-string">&quot;a+&quot;</span>){ <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> 
+                                                                <span class="ruby-identifier">pkt_array</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">element</span><span class="ruby-operator">|</span>  <span class="ruby-identifier">f</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">element</span>) }
+                                                         }    
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.2.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

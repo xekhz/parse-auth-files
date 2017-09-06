@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Pdf_report - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-do_pdf_file">#do_pdf_file</a>
+    
+    <li ><a href="#method-i-get_services">#get_services</a>
+    
+    <li ><a href="#method-i-start_document">#start_document</a>
+    
+    <li ><a href="#method-i-writer_all_log">#writer_all_log</a>
+    
+    <li ><a href="#method-i-writer_by_date">#writer_by_date</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Pdf_report">
+  <h1 id="class-Pdf_report" class="class">
+    class Pdf_report
+  </h1>
+
+  <section class="description">
+    
+<p>corrigido irao, vietnam e koreias</p>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(f,user)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Pdf_report.rb, line 15</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">f</span>,<span class="ruby-identifier">user</span>)
+<span class="ruby-ivar">@pdf</span> = <span class="ruby-constant">Prawn</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">define_grid</span>(<span class="ruby-value">:columns=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">5</span>, <span class="ruby-value">:rows=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">32</span>, <span class="ruby-value">:gutter=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">2</span>)
+<span class="ruby-ivar">@filename</span> = <span class="ruby-identifier">f</span>
+<span class="ruby-ivar">@document_title</span> =   <span class="ruby-string">&quot;NETWORK ANALYSIS AND FAILED LOGIN ATTEMPTS&quot;</span> 
+<span class="ruby-ivar">@user</span> = <span class="ruby-identifier">user</span>
+<span class="ruby-ivar">@detections_code2</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-ivar">@detections_code3</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-ivar">@detections_name</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-ivar">@detections_colors</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-ivar">@information_by_date</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-constant">Debugger</span>.<span class="ruby-identifier">set_level</span>(<span class="ruby-value">3</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-do_pdf_file" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">do_pdf_file</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="do_pdf_file-source">
+            <pre><span class="ruby-comment"># File Pdf_report.rb, line 375</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">do_pdf_file</span>
+  <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">render_file</span>(<span class="ruby-ivar">@filename</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-get_services" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_services</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Verifica a existencia do ficheiro csv e para cada existencia retira a
+informacao e gera os mapas  a incluir no pdf mapa de temperatura e mapa de
+ocorrencias</p>
+          
+          
+
+          
+          <div class="method-source-code" id="get_services-source">
+            <pre><span class="ruby-comment"># File Pdf_report.rb, line 384</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_services</span>
+  <span class="ruby-identifier">service_files</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
+  <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">foreach</span>(<span class="ruby-node">&quot;report/csv/#{@user}&quot;</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">sf</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">name_match</span> = <span class="ruby-identifier">sf</span>.<span class="ruby-identifier">match</span> <span class="ruby-regexp">/(\w+).csv/</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">name_match</span>
+     <span class="ruby-comment">#service_files &lt;&lt; sf</span>
+     <span class="ruby-comment">#@detections.store(name_match[1],Hash.new) </span>
+     <span class="ruby-identifier">d</span> = <span class="ruby-constant">Draw_map</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;report/csv/#{@user}/#{sf}&quot;</span>)
+     <span class="ruby-identifier">d</span>.<span class="ruby-identifier">process_csv_file</span>()
+     <span class="ruby-identifier">d</span>.<span class="ruby-identifier">randomize_country_colors</span>()
+     <span class="ruby-identifier">d</span>.<span class="ruby-identifier">draw_randomize</span>(<span class="ruby-node">&quot;report/images/#{@user}/#{name_match[1]}.png&quot;</span>)
+     <span class="ruby-comment"># p &quot;### INSTANCIAS VARIAVEIS GLOBAIS E DEPOIS PROCESSAR E FAZER O PDF.&quot;</span>
+     <span class="ruby-comment"># p d.get_country_code2</span>
+     <span class="ruby-comment"># p d.get_country_code3</span>
+     <span class="ruby-comment"># p d.get_country_name</span>
+     <span class="ruby-ivar">@detections_code2</span>.<span class="ruby-identifier">store</span>(<span class="ruby-identifier">name_match</span>[<span class="ruby-value">1</span>],<span class="ruby-identifier">d</span>.<span class="ruby-identifier">get_country_code2</span>)
+     <span class="ruby-ivar">@detections_code3</span>.<span class="ruby-identifier">store</span>(<span class="ruby-identifier">name_match</span>[<span class="ruby-value">1</span>],<span class="ruby-identifier">d</span>.<span class="ruby-identifier">get_country_code3</span>)
+     <span class="ruby-ivar">@detections_name</span>.<span class="ruby-identifier">store</span>(<span class="ruby-identifier">name_match</span>[<span class="ruby-value">1</span>],<span class="ruby-identifier">d</span>.<span class="ruby-identifier">get_country_name</span>)
+     <span class="ruby-ivar">@detections_colors</span>.<span class="ruby-identifier">store</span>(<span class="ruby-identifier">name_match</span>[<span class="ruby-value">1</span>],<span class="ruby-identifier">d</span>.<span class="ruby-identifier">get_country_colors</span>())
+     <span class="ruby-ivar">@information_by_date</span>.<span class="ruby-identifier">store</span>(<span class="ruby-identifier">name_match</span>[<span class="ruby-value">1</span>],<span class="ruby-identifier">d</span>.<span class="ruby-identifier">information_by_date</span>())
+      <span class="ruby-comment">#p &quot;#START#&quot;</span>
+      <span class="ruby-comment">#p @detections_code3</span>
+      <span class="ruby-comment">#p @information_by_date</span>
+      <span class="ruby-comment">#p @detections_name</span>
+      <span class="ruby-comment"># p &quot;381: #{@detections_colors}&quot;</span>
+      <span class="ruby-comment">#p &quot;#END#&quot;</span>
+     
+  <span class="ruby-keyword">end</span>
+  }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-start_document" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">start_document</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Initializa o objecto que gera o pdf</p>
+          
+          
+
+          
+          <div class="method-source-code" id="start_document-source">
+            <pre><span class="ruby-comment"># File Pdf_report.rb, line 35</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">start_document</span>
+<span class="ruby-comment">#       @geoip = GeoIP.new('GeoIP.dat')</span>
+        <span class="ruby-ivar">@geoip</span> = <span class="ruby-constant">GeoIP</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">'GeoLiteCity.dat'</span>)
+        <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">font_size</span> <span class="ruby-value">16</span>    
+        <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">move_down</span> <span class="ruby-value">250</span>
+        <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">stroke_horizontal_rule</span>
+        <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">move_down</span> <span class="ruby-value">7</span>  
+        <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">text</span>(<span class="ruby-ivar">@document_title</span>, <span class="ruby-value">:align</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:center</span>)
+        <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">stroke_horizontal_rule</span>  
+        <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">start_new_page</span>
+        <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">start_new_page</span>
+   <span class="ruby-comment">#     @pdf.grid.show_all # MOSTRAR A GRELHA PARA ORIENTACAO</span>
+         
+  <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-writer_all_log" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">writer_all_log</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Escreve o mapa no pdf e o acumulado dos hits por pais em cada servico
+analisado</p>
+          
+          
+
+          
+          <div class="method-source-code" id="writer_all_log-source">
+            <pre><span class="ruby-comment"># File Pdf_report.rb, line 56</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">writer_all_log</span>
+    <span class="ruby-keyword">begin</span>
+    
+    <span class="ruby-comment">#@pdf.stroke_axis</span>
+    <span class="ruby-comment">#self.line_with = 10</span>
+    <span class="ruby-comment">#@pdf.fill_gradient([50,300] , [250,0] , 'ff0000', '00ff00')</span>
+    <span class="ruby-comment">#@pdf.fill_rectangle([50,300], 500 , 10)</span>
+    <span class="ruby-comment">#@pdf.font_size 10</span>
+    
+    <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">font_size</span> <span class="ruby-value">14</span>    
+    <span class="ruby-comment">#@pdf.stroke_horizontal_rule</span>
+    <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">move_down</span> <span class="ruby-value">7</span> 
+   <span class="ruby-comment"># @pdf.text(&quot;NUMBER OF HITS PER SERVICE:&quot;,:align =&gt; :left)</span>
+    <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">move_down</span> <span class="ruby-value">10</span>
+    <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">font_size</span> <span class="ruby-value">12</span>
+    <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">text</span>(<span class="ruby-string">&quot;HITS PER SERVICE AND COUNTRY&quot;</span>,<span class="ruby-value">:align</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:center</span>)
+    <span class="ruby-comment"># certifica q os csv estao carregados para uma hash e posterior processamento</span>
+ 
+   
+    
+    <span class="ruby-keyword">while</span> <span class="ruby-identifier">t</span> = <span class="ruby-ivar">@detections_name</span>.<span class="ruby-identifier">shift</span> <span class="ruby-keyword">do</span>
+      <span class="ruby-identifier">line_iterator</span> = <span class="ruby-value">14</span>
+      <span class="ruby-identifier">service</span> = <span class="ruby-identifier">t</span>[<span class="ruby-value">0</span>]
+
+      <span class="ruby-comment">#hash table preparada para ir buscar o nome das bandeiras</span>
+      <span class="ruby-comment"># </span>
+      <span class="ruby-comment"># p(&quot;70: INICIO DO WRITE ALL LOG #{@detections_colors}\n&quot;)</span>
+      <span class="ruby-identifier">detections_colors</span> = <span class="ruby-ivar">@detections_colors</span>.<span class="ruby-identifier">dup</span>
+      <span class="ruby-identifier">tc</span> = <span class="ruby-identifier">detections_colors</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">service</span>) <span class="ruby-comment">#tc contem as cores de cada pais</span>
+      <span class="ruby-comment"># p &quot;72: #{detections_colors}&quot;</span>
+      <span class="ruby-comment">#line_iterator para comecar a escrever debaixo do mapa pintado</span>
+      <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">start_new_page</span>
+      <span class="ruby-identifier">service_string</span> = <span class="ruby-identifier">service</span>
+      <span class="ruby-identifier">service_string</span> = <span class="ruby-node">&quot;firewall bloked port #{service}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">service</span>.<span class="ruby-identifier">match</span> <span class="ruby-regexp">/\d+/</span>
+      <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">text</span>(<span class="ruby-node">&quot;SERVICE #{service_string} ATTEMPTS:&quot;</span>.<span class="ruby-identifier">upcase</span>,<span class="ruby-value">:align</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:left</span>)
+      <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">line_width</span>(<span class="ruby-value">1</span>)
+      <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">move_down</span> <span class="ruby-value">1</span>
+      <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">stroke_horizontal_rule</span>
+      <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">move_down</span> <span class="ruby-value">1</span>
+      <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">image</span>(<span class="ruby-node">&quot;report/images/#{@user}/#{service}.png&quot;</span>, <span class="ruby-value">:position=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:center</span> , <span class="ruby-value">:width=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">400</span>)
+      <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">stroke_horizontal_rule</span>
+      <span class="ruby-comment">#@pdf.font(&quot;Helvetica&quot;, :size=&gt;12)</span>
+      <span class="ruby-identifier">table_array</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+      <span class="ruby-comment"># ORDENAR OS ITENS PELO NOME(CHAVE)</span>
+      <span class="ruby-comment"># &quot;TAMANHO #{t[1].size}&quot;</span>
+      <span class="ruby-keyword">if</span> ((<span class="ruby-identifier">t</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">size</span>) <span class="ruby-operator">&lt;</span> <span class="ruby-value">1</span>) <span class="ruby-keyword">then</span>
+        <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">move_down</span> <span class="ruby-value">100</span>
+        <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">text</span>(<span class="ruby-string">&quot;&lt;b&gt;NOTHING DETECTED&lt;/b&gt;&quot;</span>,<span class="ruby-value">:align=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:center</span>,<span class="ruby-value">:overflow=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:shrink_to_fit</span>,<span class="ruby-value">:size=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">12</span>,<span class="ruby-value">:inline_format=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword">true</span>)
+      <span class="ruby-keyword">end</span>
+      
+      <span class="ruby-comment"># ordenar por o numero de hits</span>
+      <span class="ruby-identifier">t</span>[<span class="ruby-value">1</span>] = <span class="ruby-identifier">t</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">sort_by</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span> }.<span class="ruby-identifier">reverse</span>
+      <span class="ruby-identifier">t</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> 
+        <span class="ruby-comment">#@pdf.grid(line_iterator,0).show</span>
+        <span class="ruby-comment">#@pdf.grid(line_iterator,1).show</span>
+        <span class="ruby-comment">#@pdf.grid(line_iterator,2).show</span>
+        <span class="ruby-comment">#@pdf.grid(line_iterator,3).show</span>
+        <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">grid</span>(<span class="ruby-identifier">line_iterator</span>,<span class="ruby-value">0</span>).<span class="ruby-identifier">bounding_box</span> {
+          <span class="ruby-comment">#country name</span>
+          <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">text</span>(<span class="ruby-node">&quot;#{k}&quot;</span>,<span class="ruby-value">:align=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:right</span>,<span class="ruby-value">:overflow=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:shrink_to_fit</span>)
+          <span class="ruby-comment"># p &quot;#{k} &quot;</span>
+          } 
+          <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">grid</span>(<span class="ruby-identifier">line_iterator</span>,<span class="ruby-value">1</span>).<span class="ruby-identifier">bounding_box</span> {
+            <span class="ruby-comment">#country hits #{Prawn::Text::NBSP*3}</span>
+            <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">text</span>(<span class="ruby-node">&quot;#{v}&quot;</span>,<span class="ruby-value">:align=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:center</span>,<span class="ruby-value">:overflow=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:shrink_to_fit</span>)
+            <span class="ruby-comment"># p &quot;#{v}\t&quot;</span>
+          } 
+          <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">grid</span>(<span class="ruby-identifier">line_iterator</span>,<span class="ruby-value">2</span>).<span class="ruby-identifier">bounding_box</span> {
+            
+            <span class="ruby-comment">#country flag</span>
+            <span class="ruby-keyword">begin</span>
+           
+            <span class="ruby-identifier">name_match</span> = <span class="ruby-identifier">k</span>.<span class="ruby-identifier">match</span> <span class="ruby-regexp">/(\w+),,.+/</span>
+            
+            <span class="ruby-keyword">if</span> <span class="ruby-identifier">name_match</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">size</span><span class="ruby-operator">&gt;</span><span class="ruby-value">0</span>
+             <span class="ruby-identifier">code</span> = <span class="ruby-constant">IsoCountryCodes</span>.<span class="ruby-identifier">search_by_name</span>(<span class="ruby-identifier">name_match</span>[<span class="ruby-value">1</span>])
+             <span class="ruby-keyword">else</span>
+              <span class="ruby-identifier">code</span> = <span class="ruby-constant">IsoCountryCodes</span>.<span class="ruby-identifier">search_by_name</span>(<span class="ruby-identifier">k</span>)
+            <span class="ruby-keyword">end</span>
+            <span class="ruby-identifier">flag</span> = (<span class="ruby-identifier">code</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">alpha2</span>).<span class="ruby-identifier">downcase</span>
+            <span class="ruby-comment"># p &quot; #{flag} &quot;</span>
+            <span class="ruby-keyword">rescue</span>
+            <span class="ruby-identifier">flag</span>=<span class="ruby-string">&quot;default&quot;</span>
+            <span class="ruby-keyword">end</span>
+            <span class="ruby-comment">#flag=(t2[1].shift)[0]</span>
+            <span class="ruby-comment">#flag.downcase</span>
+            <span class="ruby-identifier">image_default</span> = <span class="ruby-string">&quot;flags_iso/default.png&quot;</span>
+            <span class="ruby-identifier">image</span> = <span class="ruby-node">&quot;flags_iso/128/#{flag.downcase}.png&quot;</span>
+            <span class="ruby-identifier">image</span> = <span class="ruby-identifier">image_default</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">image</span>)
+            <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">move_up</span> <span class="ruby-value">5</span>
+            <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">image</span>(<span class="ruby-identifier">image</span>,<span class="ruby-value">:width=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">20</span>) 
+         }
+         <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">grid</span>(<span class="ruby-identifier">line_iterator</span>,<span class="ruby-value">3</span>).<span class="ruby-identifier">bounding_box</span> {
+            <span class="ruby-comment">#country color</span>
+            <span class="ruby-keyword">begin</span> 
+              <span class="ruby-identifier">name_match</span> = <span class="ruby-identifier">k</span>.<span class="ruby-identifier">match</span> <span class="ruby-regexp">/(\w+),,.+/</span>
+             <span class="ruby-comment"># p &quot;137: #{k}&quot; </span>
+              <span class="ruby-keyword">if</span> <span class="ruby-identifier">name_match</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">size</span><span class="ruby-operator">&gt;</span><span class="ruby-value">0</span>
+               <span class="ruby-identifier">code</span> = <span class="ruby-constant">IsoCountryCodes</span>.<span class="ruby-identifier">search_by_name</span>(<span class="ruby-identifier">name_match</span>[<span class="ruby-value">1</span>])
+              <span class="ruby-keyword">else</span>
+              <span class="ruby-comment">#  p &quot;141: searching for #{k}&quot;</span>
+               <span class="ruby-identifier">code</span> = <span class="ruby-constant">IsoCountryCodes</span>.<span class="ruby-identifier">search_by_name</span>(<span class="ruby-identifier">k</span>)
+              <span class="ruby-comment"># p &quot;143: #{code[0].alpha3}&quot;</span>
+              <span class="ruby-keyword">end</span>
+             
+            <span class="ruby-identifier">color</span> = <span class="ruby-identifier">tc</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">code</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">alpha3</span>)
+            <span class="ruby-comment"># p &quot;146: #{color}&quot;</span>
+            <span class="ruby-keyword">rescue</span>
+            <span class="ruby-identifier">color</span> = <span class="ruby-node">&quot;#ffffff&quot;</span>
+            <span class="ruby-keyword">end</span>
+            <span class="ruby-comment"># p &quot;147: #{color}\n&quot;</span>
+            <span class="ruby-identifier">color</span>[<span class="ruby-value">0</span>]=<span class="ruby-string">''</span> <span class="ruby-comment"># PROBLEMA ESTRANHO NO RUBY APESAR DE SE USAR UM CLONE DE UMA VAR DE INSTANCIA ESTA ALTERACAO E RESCRITA NA VARIAVEL DE INSTANCIA. TUDO OQUE FOR PINTADO PARA A FRENTE N SE RETIRA O #</span>
+            <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">fill_color</span> = <span class="ruby-identifier">color</span>.<span class="ruby-identifier">to_s</span>
+
+            <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">fill_rectangle</span> [<span class="ruby-value">0</span>,<span class="ruby-value">13</span>], <span class="ruby-value">60</span> , <span class="ruby-value">-10</span>
+            <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">fill_color</span> = <span class="ruby-string">&quot;000000&quot;</span>
+<span class="ruby-comment">#            @pdf.text &quot;#{color}&quot;</span>
+           } 
+         <span class="ruby-keyword">if</span> <span class="ruby-identifier">line_iterator</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">27</span> <span class="ruby-keyword">then</span>
+          <span class="ruby-identifier">line_iterator</span>=<span class="ruby-identifier">line_iterator</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>
+         <span class="ruby-keyword">else</span>
+            <span class="ruby-identifier">line_iterator</span> = <span class="ruby-value">1</span>
+            <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">start_new_page</span>
+         <span class="ruby-keyword">end</span>  
+      } <span class="ruby-comment">#fim do t.each </span>
+  
+    <span class="ruby-keyword">end</span> <span class="ruby-comment">#fim do while</span>
+<span class="ruby-comment">#    @pdf.font(&quot;Helvetica&quot;, :size=&gt;12)</span>
+    <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">start_new_page</span>
+   <span class="ruby-comment"># @pdf.text &quot;#########FIM DA IMPRESSAO ###############&quot;</span>
+    <span class="ruby-keyword">ensure</span>
+    
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-writer_by_date" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">writer_by_date</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Escreve o mapa no pdf e o discriminado por hora e dia dos hits por pais em
+cada servico analisado</p>
+          
+          
+
+          
+          <div class="method-source-code" id="writer_by_date-source">
+            <pre><span class="ruby-comment"># File Pdf_report.rb, line 198</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">writer_by_date</span>
+  
+  <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">font_size</span> <span class="ruby-value">14</span>    
+      <span class="ruby-comment">#@pdf.stroke_horizontal_rule</span>
+      <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">move_down</span> <span class="ruby-value">7</span> 
+   <span class="ruby-comment">#   @pdf.text(&quot;NUMBER OF HITS PER SERVICE:&quot;,:align =&gt; :left)</span>
+      <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">move_down</span> <span class="ruby-value">10</span>
+      <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">font_size</span> <span class="ruby-value">12</span>
+      <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">text</span>(<span class="ruby-string">&quot;HITS PER SERVICE / DATE / COUNTRY - IP ADDRESS&quot;</span>,<span class="ruby-value">:align</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:center</span>)
+      <span class="ruby-comment"># certifica q os csv estao carregados para uma hash e posterior processamento</span>
+      <span class="ruby-comment"># p @information_by_date</span>
+      <span class="ruby-comment">#p &quot;CORES DE CADA PAIS #{@detections_colors}&quot;  #tc contem as cores de cada pais</span>
+      <span class="ruby-comment"># p(&quot;182: INICIO DO WRITE BY DATE #{@detections_colors}\n&quot;)</span>
+      <span class="ruby-keyword">while</span> <span class="ruby-identifier">t</span> = <span class="ruby-ivar">@information_by_date</span>.<span class="ruby-identifier">shift</span> <span class="ruby-keyword">do</span>
+        <span class="ruby-identifier">service</span> = <span class="ruby-identifier">t</span>[<span class="ruby-value">0</span>]
+        <span class="ruby-identifier">_data_hash</span> = <span class="ruby-identifier">t</span>[<span class="ruby-value">1</span>]
+        <span class="ruby-identifier">line_iterator</span> = <span class="ruby-value">14</span>
+              <span class="ruby-identifier">service</span> = <span class="ruby-identifier">t</span>[<span class="ruby-value">0</span>]
+              <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">start_new_page</span>
+              <span class="ruby-identifier">service_string</span> = <span class="ruby-identifier">service</span>
+              <span class="ruby-identifier">service_string</span> = <span class="ruby-node">&quot;firewall bloked port #{service}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">service</span>.<span class="ruby-identifier">match</span> <span class="ruby-regexp">/\d+/</span>
+              <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">text</span>(<span class="ruby-node">&quot;SERVICE #{service_string} ATTEMPTS:&quot;</span>.<span class="ruby-identifier">upcase</span>,<span class="ruby-value">:align</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:left</span>)
+              <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">line_width</span>(<span class="ruby-value">1</span>)
+              <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">move_down</span> <span class="ruby-value">1</span>
+              <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">stroke_horizontal_rule</span>
+              <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">move_down</span> <span class="ruby-value">1</span>
+              <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">image</span>(<span class="ruby-node">&quot;report/images/#{@user}/#{service}.png&quot;</span>, <span class="ruby-value">:position=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:center</span> , <span class="ruby-value">:width=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">400</span>)
+              <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">stroke_horizontal_rule</span>
+              <span class="ruby-identifier">table_array</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+              <span class="ruby-comment"># ORDENAR OS ITENS PELO NOME(CHAVE)</span>
+              <span class="ruby-comment"># &quot;TAMANHO #{t[1].size}&quot;</span>
+              <span class="ruby-keyword">if</span> ((<span class="ruby-identifier">t</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">size</span>) <span class="ruby-operator">&lt;</span> <span class="ruby-value">1</span>) <span class="ruby-keyword">then</span>
+              <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">move_down</span> <span class="ruby-value">100</span>
+              <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">text</span>(<span class="ruby-string">&quot;&lt;b&gt;NOTHING DETECTED&lt;/b&gt;&quot;</span>,<span class="ruby-value">:align=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:center</span>,<span class="ruby-value">:overflow=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:shrink_to_fit</span>,<span class="ruby-value">:size=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">12</span>,<span class="ruby-value">:inline_format=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword">true</span>)
+              <span class="ruby-keyword">end</span>
+              <span class="ruby-identifier">first</span> = <span class="ruby-keyword">true</span>
+              <span class="ruby-identifier">t</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+                  <span class="ruby-comment"># p &quot;#{k} #{v}&quot;</span>
+                        <span class="ruby-comment">#ESCREVE O DIA k</span>
+                        <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">move_down</span> <span class="ruby-value">5</span>
+                        <span class="ruby-comment"># p &quot;DIA: #{k}&quot;</span>
+                        (<span class="ruby-identifier">first</span> = <span class="ruby-keyword">true</span> ; <span class="ruby-identifier">line_iterator</span>=<span class="ruby-value">1</span>)<span class="ruby-keyword">if</span> <span class="ruby-identifier">line_iterator</span> <span class="ruby-operator">&lt;</span><span class="ruby-value">4</span>
+                        (  <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">start_new_page</span>; <span class="ruby-identifier">line_iterator</span>=<span class="ruby-value">1</span>) <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">first</span> 
+                        <span class="ruby-identifier">first</span> = <span class="ruby-keyword">false</span>
+                        <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">grid</span>(<span class="ruby-identifier">line_iterator</span>,<span class="ruby-value">0</span>).<span class="ruby-identifier">bounding_box</span> {   
+                            <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">text</span>(<span class="ruby-node">&quot;&lt;b&gt;#{k}&lt;/b&gt;&quot;</span>,<span class="ruby-value">:align=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:left</span>,<span class="ruby-value">:overflow=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:shrink_to_fit</span>,<span class="ruby-value">:size=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">12</span>,<span class="ruby-value">:inline_format=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword">true</span>)
+                        }
+                        <span class="ruby-comment"># v = {\&quot;12\&quot;=&gt;{\&quot;177.154.231.72\&quot;=&gt;1}, \&quot;13\&quot;=&gt;{\&quot;177.154.231.72\&quot;=&gt;2}</span>
+                        <span class="ruby-identifier">line_iterator</span>=<span class="ruby-identifier">line_iterator</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>
+                         <span class="ruby-comment">#vv = v.clone</span>
+                         <span class="ruby-identifier">v</span> = <span class="ruby-identifier">v</span>.<span class="ruby-identifier">sort_by</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span><span class="ruby-operator">|</span><span class="ruby-identifier">a</span>}
+                         <span class="ruby-comment"># p &quot;COMPARAR v #{v}&quot;</span>
+                         <span class="ruby-comment"># p &quot;COM #{vv}&quot;</span>
+                         <span class="ruby-identifier">v</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">hora</span>,<span class="ruby-identifier">h_ip</span><span class="ruby-operator">|</span>
+                            <span class="ruby-comment"># p &quot;DIA #{k} Hora #{hora} HASH IP #{h_ip}&quot;</span>
+                           <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">grid</span>(<span class="ruby-identifier">line_iterator</span>,<span class="ruby-value">0</span>).<span class="ruby-identifier">bounding_box</span> {
+                            <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">text</span>(<span class="ruby-node">&quot;&lt;b&gt;From #{hora} O\'clock until +1 hour &lt;/b&gt;&quot;</span>,<span class="ruby-value">:align=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:left</span>,<span class="ruby-value">:overflow=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:shrink_to_fit</span>,<span class="ruby-value">:size=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">12</span>,<span class="ruby-value">:inline_format=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword">true</span>)
+                           }
+                            <span class="ruby-identifier">h_ip</span> = <span class="ruby-identifier">h_ip</span>.<span class="ruby-identifier">sort_by</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span><span class="ruby-operator">|</span><span class="ruby-identifier">b</span>}.<span class="ruby-identifier">reverse</span>
+                           <span class="ruby-identifier">line_iterator</span>=<span class="ruby-identifier">line_iterator</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>
+                            <span class="ruby-identifier">h_ip</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">ip</span>,<span class="ruby-identifier">hits</span><span class="ruby-operator">|</span>
+                              <span class="ruby-comment">#line_iterator=line_iterator+1 </span>
+                              <span class="ruby-identifier">_ip_information</span> = <span class="ruby-ivar">@geoip</span>.<span class="ruby-identifier">country</span>(<span class="ruby-identifier">ip</span>)
+                              
+                              <span class="ruby-comment">############################ COUNTRY NAME ################################</span>
+                              <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">grid</span>(<span class="ruby-identifier">line_iterator</span>,<span class="ruby-value">0</span>).<span class="ruby-identifier">bounding_box</span> {
+                                <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">text</span>(<span class="ruby-node">&quot;#{_ip_information.country_name}&quot;</span>,<span class="ruby-value">:align=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:right</span>,<span class="ruby-value">:overflow=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:shrink_to_fit</span>,<span class="ruby-value">:size=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">10</span>,<span class="ruby-value">:inline_format=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword">true</span>)
+                                <span class="ruby-comment"># p &quot;IP: #{_ip_information.country_name} HITS:#{hits}&quot;</span>
+                                }
+                              <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">grid</span>(<span class="ruby-identifier">line_iterator</span>,<span class="ruby-value">1</span>).<span class="ruby-identifier">bounding_box</span> {
+                                <span class="ruby-keyword">if</span> <span class="ruby-identifier">_ip_information</span>.<span class="ruby-identifier">city_name</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;&quot;</span>
+                                      <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">text</span>(<span class="ruby-node">&quot;#{_ip_information.city_name}&quot;</span>,<span class="ruby-value">:align=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:center</span>,<span class="ruby-value">:overflow=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:shrink_to_fit</span>,<span class="ruby-value">:size=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">10</span>,<span class="ruby-value">:inline_format=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword">true</span>)
+                                <span class="ruby-keyword">else</span>
+                                  <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">text</span>(<span class="ruby-string">&quot;---&quot;</span>,<span class="ruby-value">:align=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:center</span>,<span class="ruby-value">:overflow=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:shrink_to_fit</span>,<span class="ruby-value">:size=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">10</span>,<span class="ruby-value">:inline_format=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword">true</span>)
+                                <span class="ruby-keyword">end</span>
+                                        <span class="ruby-comment">#p &quot;IP: #{_ip_information}&quot;</span>
+                                      }
+                              <span class="ruby-comment">############################ IP OU NOME ######################################     </span>
+                              <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">grid</span>(<span class="ruby-identifier">line_iterator</span>,<span class="ruby-value">2</span>).<span class="ruby-identifier">bounding_box</span> {
+                                      <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">text</span>(<span class="ruby-node">&quot;#{ip}&quot;</span>,<span class="ruby-value">:align=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:center</span>,<span class="ruby-value">:overflow=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:shrink_to_fit</span>,<span class="ruby-value">:size=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">10</span>,<span class="ruby-value">:inline_format=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword">true</span>)
+                                        <span class="ruby-comment">#p &quot;IP: #{_ip_information}&quot;</span>
+                                      }
+
+                               <span class="ruby-comment">############################ HITS ################################ </span>
+                              <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">grid</span>(<span class="ruby-identifier">line_iterator</span>,<span class="ruby-value">3</span>).<span class="ruby-identifier">bounding_box</span> {
+                                     <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">text</span>(<span class="ruby-node">&quot;#{hits}&quot;</span>,<span class="ruby-value">:align=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:center</span>,<span class="ruby-value">:overflow=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:shrink_to_fit</span>,<span class="ruby-value">:size=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">10</span>,<span class="ruby-value">:inline_format=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword">true</span>)
+                                    <span class="ruby-comment"># p &quot;IP: #{_ip_information.country_name} HITS:#{hits}&quot;</span>
+                                   }
+                             
+                              <span class="ruby-comment">############################ FLAG ################################</span>
+                              <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">grid</span>(<span class="ruby-identifier">line_iterator</span>,<span class="ruby-value">3</span>).<span class="ruby-identifier">bounding_box</span> {
+                                
+                                <span class="ruby-comment">#country flag</span>
+                                <span class="ruby-keyword">begin</span>
+                                  <span class="ruby-comment"># p &quot;SEARCHING FOR FLAG OF #{_ip_information.country_name}&quot; </span>
+                                  <span class="ruby-identifier">name_match</span> = <span class="ruby-identifier">_ip_information</span>.<span class="ruby-identifier">country_code3</span>.<span class="ruby-identifier">match</span> <span class="ruby-regexp">/(\w+),,.+/</span>                                     
+                                
+                                <span class="ruby-keyword">if</span> <span class="ruby-identifier">name_match</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">size</span><span class="ruby-operator">&gt;</span><span class="ruby-value">0</span>
+                                 <span class="ruby-identifier">code</span> = <span class="ruby-constant">IsoCountryCodes</span>.<span class="ruby-identifier">search_by_name</span>(<span class="ruby-identifier">name_match</span>[<span class="ruby-value">1</span>])
+                                 <span class="ruby-keyword">else</span>
+                                  <span class="ruby-identifier">code</span> = <span class="ruby-constant">IsoCountryCodes</span>.<span class="ruby-identifier">search_by_name</span>(<span class="ruby-identifier">_ip_information</span>.<span class="ruby-identifier">country_name</span>)
+                                <span class="ruby-keyword">end</span>
+                                <span class="ruby-identifier">flag</span> = (<span class="ruby-identifier">_ip_information</span>.<span class="ruby-identifier">country_code2</span>).<span class="ruby-identifier">downcase</span>
+                                <span class="ruby-comment"># printf &quot; FLAG: #{flag} \n&quot;</span>
+                                <span class="ruby-keyword">rescue</span>
+                                <span class="ruby-identifier">flag</span>=<span class="ruby-string">&quot;default&quot;</span>
+                                <span class="ruby-keyword">end</span>
+                                <span class="ruby-comment">#flag=(t2[1].shift)[0]</span>
+                                <span class="ruby-comment">#flag.downcase</span>
+                                <span class="ruby-identifier">image_default</span> = <span class="ruby-string">&quot;flags_iso/default.png&quot;</span>
+                                <span class="ruby-identifier">image</span> = <span class="ruby-node">&quot;flags_iso/128/#{flag.downcase}.png&quot;</span>
+                                <span class="ruby-identifier">image</span> = <span class="ruby-identifier">image_default</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">image</span>)
+                                <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">move_up</span> <span class="ruby-value">5</span>
+ 
+                                <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">image</span>(<span class="ruby-identifier">image</span>,<span class="ruby-value">:width=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">20</span>) 
+                             }
+                                
+                                   
+                              <span class="ruby-comment">############################ COLOR ################################</span>
+                                <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">grid</span>(<span class="ruby-identifier">line_iterator</span>,<span class="ruby-value">4</span>).<span class="ruby-identifier">bounding_box</span> {
+                                 <span class="ruby-comment">#country color</span>
+                                 <span class="ruby-comment"># printf(&quot;287: #{service} #{_ip_information.country_code3} #{@detections_colors.fetch(service)}\n&quot;)</span>
+                                 <span class="ruby-keyword">begin</span>
+                                   
+                                   <span class="ruby-comment">#Debbuger.debug(&quot;SEARCHING FOR COLOR OF #{_ip_information.country_code3} SERVICE: #{service} #{@detections_colors.fetch(service)}&quot;,0) </span>
+                                   <span class="ruby-identifier">name_match</span> = <span class="ruby-identifier">_ip_information</span>.<span class="ruby-identifier">country_code3</span>.<span class="ruby-identifier">match</span> <span class="ruby-regexp">/(\w+),,.+/</span>                                     
+                                   
+                                   <span class="ruby-keyword">if</span> <span class="ruby-identifier">name_match</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">size</span><span class="ruby-operator">&gt;</span><span class="ruby-value">0</span>
+                                    <span class="ruby-identifier">code</span> = <span class="ruby-constant">IsoCountryCodes</span>.<span class="ruby-identifier">search_by_name</span>(<span class="ruby-identifier">name_match</span>[<span class="ruby-value">1</span>])
+                                   <span class="ruby-keyword">else</span>
+                                    <span class="ruby-identifier">code</span> = <span class="ruby-constant">IsoCountryCodes</span>.<span class="ruby-identifier">search_by_name</span>(<span class="ruby-identifier">_ip_information</span>.<span class="ruby-identifier">country_name</span>)
+                                   <span class="ruby-keyword">end</span>                                    
+                                 <span class="ruby-comment">#Debugger.debug(&quot;color : #{@detections_colors.fetch(service).fetch(code[0].alpha3)}\n&quot;,0)</span>
+                                 <span class="ruby-identifier">color</span> = <span class="ruby-ivar">@detections_colors</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">service</span>).<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">code</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">alpha3</span>)
+                                 <span class="ruby-keyword">rescue</span>
+                                 <span class="ruby-comment">#Debugger.debug(&quot;NO COLOR&quot;,0) </span>
+                                 <span class="ruby-identifier">color</span> = <span class="ruby-string">&quot;ffffff&quot;</span>
+                                 <span class="ruby-keyword">end</span>
+                                 <span class="ruby-comment">#printf&quot; COLOR: #{color}\n&quot;</span>
+                                 <span class="ruby-comment">#color_match = color.to_s.match /.(.+)/</span>
+                                 <span class="ruby-comment">#Debugger.debug(&quot;A COR E: #{color_match[1]}&quot;,0)</span>
+                                
+                                 <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">fill_color</span> = <span class="ruby-identifier">color</span>
+                                 <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">fill_rectangle</span> [<span class="ruby-value">0</span>,<span class="ruby-value">13</span>], <span class="ruby-value">60</span> , <span class="ruby-value">-10</span>
+                          
+                                 <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">fill_color</span> = <span class="ruby-string">&quot;000000&quot;</span>
+                     <span class="ruby-comment">#            @pdf.text &quot;#{color}&quot;</span>
+                                } 
+                                 <span class="ruby-identifier">line_iterator</span>=<span class="ruby-identifier">line_iterator</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>
+                           }
+                            
+                           <span class="ruby-keyword">if</span> <span class="ruby-identifier">line_iterator</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">28</span> <span class="ruby-keyword">then</span>
+                           <span class="ruby-comment">#line_iterator=line_iterator+2</span>
+                            <span class="ruby-identifier">line_iterator</span>=<span class="ruby-identifier">line_iterator</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>
+                          <span class="ruby-keyword">else</span>
+                            <span class="ruby-identifier">line_iterator</span> = <span class="ruby-value">1</span>
+                            <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">start_new_page</span>
+                          <span class="ruby-keyword">end</span>
+                           
+                           
+                         }<span class="ruby-comment"># fim v.each</span>
+                         <span class="ruby-comment">###line_iterator=line_iterator+2  </span>
+                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">line_iterator</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">29</span> <span class="ruby-keyword">then</span>
+                           <span class="ruby-identifier">line_iterator</span>=<span class="ruby-identifier">line_iterator</span><span class="ruby-operator">+</span><span class="ruby-value">2</span>
+                           <span class="ruby-comment"># line_iterator=line_iterator+1</span>
+                          <span class="ruby-keyword">else</span>
+                            <span class="ruby-identifier">line_iterator</span> = <span class="ruby-value">1</span>
+                             <span class="ruby-ivar">@pdf</span>.<span class="ruby-identifier">start_new_page</span>
+                          <span class="ruby-keyword">end</span>
+                          
+                        } <span class="ruby-comment"># FIM t[1].each</span>
+              
+    
+
+      <span class="ruby-keyword">end</span> <span class="ruby-comment"># FIM DO WHILE</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.2.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

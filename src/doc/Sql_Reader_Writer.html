@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Sql_Reader_Writer - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-check_user">#check_user</a>
+    
+    <li ><a href="#method-i-check_user_password">#check_user_password</a>
+    
+    <li ><a href="#method-i-create_user">#create_user</a>
+    
+    <li ><a href="#method-i-create_user_database">#create_user_database</a>
+    
+    <li ><a href="#method-i-csv_cap_to_sql">#csv_cap_to_sql</a>
+    
+    <li ><a href="#method-i-delete_user">#delete_user</a>
+    
+    <li ><a href="#method-i-delete_user_login">#delete_user_login</a>
+    
+    <li ><a href="#method-i-service_csv_to_sql">#service_csv_to_sql</a>
+    
+    <li ><a href="#method-i-sql_to_cap_csv">#sql_to_cap_csv</a>
+    
+    <li ><a href="#method-i-sql_to_csv_service">#sql_to_csv_service</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Sql_Reader_Writer">
+  <h1 id="class-Sql_Reader_Writer" class="class">
+    class Sql_Reader_Writer
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(_user,nocipher=false)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>initializa o objecto e cria igualmente o objecto cifra</p>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Sql_Reader_Writer.rb, line 10</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">_user</span>,<span class="ruby-identifier">nocipher</span>=<span class="ruby-keyword">false</span>)
+  <span class="ruby-ivar">@user</span> = <span class="ruby-identifier">_user</span> 
+  <span class="ruby-ivar">@cipher</span> = <span class="ruby-constant">Cipher</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">nocipher</span>    
+   <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">check_user</span>(<span class="ruby-identifier">_user</span>)  
+     <span class="ruby-identifier">create_user_database</span>(<span class="ruby-identifier">_user</span>)
+   <span class="ruby-keyword">else</span>
+     <span class="ruby-ivar">@db</span> = <span class="ruby-constant">SQLite3</span><span class="ruby-operator">::</span><span class="ruby-constant">Database</span>.<span class="ruby-identifier">new</span>( <span class="ruby-node">&quot;report/database/#{_user}.db&quot;</span> )   
+   <span class="ruby-keyword">end</span>  
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-check_user" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">check_user</span><span
+            class="method-args">(user)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Verifica se o user existe</p>
+
+<p>return boolean</p>
+          
+          
+
+          
+          <div class="method-source-code" id="check_user-source">
+            <pre><span class="ruby-comment"># File Sql_Reader_Writer.rb, line 229</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">check_user</span>(<span class="ruby-identifier">user</span>)
+  <span class="ruby-keyword">begin</span> 
+  <span class="ruby-keyword">return</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-node">&quot;report/database/#{user}.db&quot;</span>)
+    <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+      <span class="ruby-identifier">p</span> <span class="ruby-node">&quot; Sql_Reader_Writer : check_user  #{e}&quot;</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">end</span> 
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-check_user_password" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">check_user_password</span><span
+            class="method-args">(user)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Recebe como parametreo o nome do utilizadar e retorna um boolean mediante a
+condicao se true or false Verifica a existencia do utilizador na BD Como o
+nome do UTILIZADOR esta cifrado com a PASSWORD do utilizador é necessario
+fazer o match com o objecto cifra e verificar se obtemos a mesma string ou
+seja o nome do utilizador</p>
+          
+          
+
+          
+          <div class="method-source-code" id="check_user_password-source">
+            <pre><span class="ruby-comment"># File Sql_Reader_Writer.rb, line 24</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">check_user_password</span>(<span class="ruby-identifier">user</span>)
+  <span class="ruby-ivar">@db</span> = <span class="ruby-constant">SQLite3</span><span class="ruby-operator">::</span><span class="ruby-constant">Database</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;report/database/program/user.db&quot;</span> )
+  
+  <span class="ruby-identifier">query</span> = <span class="ruby-string">&quot;select * from user&quot;</span>
+  <span class="ruby-ivar">@db</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-identifier">query</span>).<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">r</span><span class="ruby-operator">|</span>
+   <span class="ruby-comment"># p r</span>
+   <span class="ruby-comment"># p Base64.decode64(r[1])</span>
+   <span class="ruby-comment"># p @cipher.cipher(&quot;#{user}&quot;)</span>
+   <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> ( <span class="ruby-constant">Base64</span>.<span class="ruby-identifier">decode64</span>(<span class="ruby-identifier">r</span>[<span class="ruby-value">1</span>]) <span class="ruby-operator">==</span>  <span class="ruby-ivar">@cipher</span>.<span class="ruby-identifier">cipher</span>(<span class="ruby-node">&quot;#{user}&quot;</span>))
+  }
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-create_user" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">create_user</span><span
+            class="method-args">(user)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>cria um utilizador na BD</p>
+          
+          
+
+          
+          <div class="method-source-code" id="create_user-source">
+            <pre><span class="ruby-comment"># File Sql_Reader_Writer.rb, line 209</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">create_user</span>(<span class="ruby-identifier">user</span>)
+  <span class="ruby-identifier">create_user_database</span>(<span class="ruby-identifier">user</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-create_user_database" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">create_user_database</span><span
+            class="method-args">(user)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>cria uma BD por cada user cria as tabelas necessarias</p>
+          
+          
+
+          
+          <div class="method-source-code" id="create_user_database-source">
+            <pre><span class="ruby-comment"># File Sql_Reader_Writer.rb, line 241</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">create_user_database</span>(<span class="ruby-identifier">user</span>)  
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-ivar">@db</span> = <span class="ruby-constant">SQLite3</span><span class="ruby-operator">::</span><span class="ruby-constant">Database</span>.<span class="ruby-identifier">new</span>( <span class="ruby-node">&quot;report/database/#{user}.db&quot;</span> ) 
+    
+    <span class="ruby-comment">#create table auth_ufw</span>
+    <span class="ruby-identifier">auth_ufw</span> = <span class="ruby-string">&quot;CREATE TABLE auth_ufw (
+          id  INTEGER PRIMARY KEY AUTOINCREMENT,
+          service varchar(15),
+          ip_address varchar2(15),
+          timestamp varchar2(20)
+        );  
+    &quot;</span>
+    <span class="ruby-ivar">@db</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-identifier">auth_ufw</span>)
+    <span class="ruby-identifier">p</span> <span class="ruby-string">&quot;done creatig table auth_ufw&quot;</span>
+    
+    <span class="ruby-identifier">capture</span> = <span class="ruby-string">&quot;CREATE TABLE capture (
+    id   INTEGER PRIMARY KEY AUTOINCREMENT ,
+    ip_source varchar(15),
+    port_source varchar2(15000),
+    ip_dest varchar2(15000),
+    port_dest varchar2(15000),
+    data varchar2(15000)
+  );  
+&quot;</span>
+    <span class="ruby-ivar">@db</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-identifier">capture</span>)
+      <span class="ruby-identifier">p</span> <span class="ruby-string">&quot;done creating table capture&quot;</span>
+  
+  
+     
+    <span class="ruby-identifier">user_table</span> = <span class="ruby-string">&quot;CREATE TABLE user (
+       id   INTEGER PRIMARY KEY AUTOINCREMENT ,
+       username varchar(15),
+       userpass varchar2(15)
+     );  
+   &quot;</span>
+    <span class="ruby-ivar">@db</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-identifier">user_table</span>)
+    
+   <span class="ruby-identifier">p</span> <span class="ruby-string">&quot;done creating table user&quot;</span>
+     
+    <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-string">&quot;report/database/program/user.db&quot;</span>)   
+      <span class="ruby-ivar">@db1</span> = <span class="ruby-constant">SQLite3</span><span class="ruby-operator">::</span><span class="ruby-constant">Database</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;report/database/program/user.db&quot;</span> )
+        <span class="ruby-identifier">user_table</span> = <span class="ruby-string">&quot;CREATE TABLE user (
+         id   INTEGER PRIMARY KEY AUTOINCREMENT ,
+         username varchar(150)
+       );  
+      &quot;</span>   
+      <span class="ruby-ivar">@db1</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-identifier">user_table</span>)
+      <span class="ruby-identifier">p</span> <span class="ruby-string">&quot;done creating table for user autentications&quot;</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-ivar">@db1</span> = <span class="ruby-constant">SQLite3</span><span class="ruby-operator">::</span><span class="ruby-constant">Database</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;report/database/program/user.db&quot;</span> )
+  
+    <span class="ruby-identifier">cipher_username</span> = <span class="ruby-constant">Base64</span>.<span class="ruby-identifier">encode64</span>(<span class="ruby-ivar">@cipher</span>.<span class="ruby-identifier">cipher</span>(<span class="ruby-node">&quot;#{user}&quot;</span>))
+    <span class="ruby-identifier">query</span> = <span class="ruby-node">&quot;INSERT INTO user (username) values ('#{cipher_username}')&quot;</span>
+    <span class="ruby-ivar">@db1</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-identifier">query</span>)
+    <span class="ruby-identifier">p</span> <span class="ruby-node">&quot;user #{user} inserted\n&quot;</span>  
+   
+    
+  <span class="ruby-keyword">rescue</span>   <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span> 
+    <span class="ruby-identifier">p</span> <span class="ruby-node">&quot;Sql_Reader_Writer : create_user_database  #{e}&quot;</span>
+  <span class="ruby-keyword">end</span>
+    <span class="ruby-comment">#db.execute(auth_ufw)</span>
+    
+  <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-csv_cap_to_sql" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">csv_cap_to_sql</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Pega no conteudo de um ficheiro CAP  file Cifra o conteudo da linha com a
+password fornecida pelo utiliador e insere no SQLITE (EXISTE SE QUISERMOS
+UMA PASSWORD PARA CADA OPERACAO, UMA PARA O LOGIN DO USER e UMA PARA CADA
+FICHEIRO PROCESSADO)</p>
+          
+          
+
+          
+          <div class="method-source-code" id="csv_cap_to_sql-source">
+            <pre><span class="ruby-comment"># File Sql_Reader_Writer.rb, line 112</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">csv_cap_to_sql</span>
+  <span class="ruby-keyword">begin</span> 
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-node">&quot;report/csv/#{@user}/capture.cap&quot;</span>)
+    <span class="ruby-identifier">f</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;report/csv/#{@user}/capture.cap&quot;</span>,<span class="ruby-identifier">mode</span>=<span class="ruby-string">&quot;r&quot;</span>)
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-keyword">while</span> <span class="ruby-identifier">line</span> = <span class="ruby-identifier">f</span>.<span class="ruby-identifier">readline</span>
+     <span class="ruby-identifier">lm</span> = <span class="ruby-identifier">line</span>.<span class="ruby-identifier">match</span> <span class="ruby-regexp">/(\d+\.\d+\.\d+\.\d+);(.+);(\d+\.\d+\.\d+\.\d+);(.+);(.+)/</span>
+     <span class="ruby-keyword">begin</span>
+     <span class="ruby-comment">#@db.execute(&quot;INSERT INTO capture (ip_source,port_source,ip_dest,port_dest,data)values ( '#{lm[1]}' , '#{lm[2]}' , '#{lm[3]}' , '#{lm[4]}','#{lm[5]}' )&quot;) if lm != nil</span>
+       <span class="ruby-keyword">if</span> <span class="ruby-identifier">lm</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> 
+        <span class="ruby-identifier">ip_source</span>   = <span class="ruby-constant">Base64</span>.<span class="ruby-identifier">encode64</span>(<span class="ruby-ivar">@cipher</span>.<span class="ruby-identifier">cipher</span>(<span class="ruby-node">&quot;#{lm[1]}&quot;</span>))
+        <span class="ruby-identifier">port_source</span> = <span class="ruby-constant">Base64</span>.<span class="ruby-identifier">encode64</span>(<span class="ruby-ivar">@cipher</span>.<span class="ruby-identifier">cipher</span>(<span class="ruby-node">&quot;#{lm[2]}&quot;</span>))
+        <span class="ruby-identifier">ip_dest</span>     = <span class="ruby-constant">Base64</span>.<span class="ruby-identifier">encode64</span>(<span class="ruby-ivar">@cipher</span>.<span class="ruby-identifier">cipher</span>(<span class="ruby-node">&quot;#{lm[3]}&quot;</span>))
+        <span class="ruby-identifier">port_dest</span>   = <span class="ruby-constant">Base64</span>.<span class="ruby-identifier">encode64</span>(<span class="ruby-ivar">@cipher</span>.<span class="ruby-identifier">cipher</span>(<span class="ruby-node">&quot;#{lm[4]}&quot;</span>))
+        <span class="ruby-identifier">data</span>        = <span class="ruby-constant">Base64</span>.<span class="ruby-identifier">encode64</span>(<span class="ruby-ivar">@cipher</span>.<span class="ruby-identifier">cipher</span>(<span class="ruby-node">&quot;#{lm[5]}&quot;</span>))         
+        <span class="ruby-ivar">@db</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;INSERT INTO capture (ip_source,port_source,ip_dest,port_dest,data)values ( '#{ip_source}' , '#{port_source}' , '#{ip_dest}' , '#{port_dest}','#{data}' )&quot;</span>) 
+       <span class="ruby-keyword">end</span>
+     <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+       <span class="ruby-identifier">p</span> <span class="ruby-node">&quot;sql_reader_writer : csv_cap_to_sql #{e}&quot;</span>
+       <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;error csv cap to sql&quot;</span>
+     <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">EOFError</span>
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-node">&quot;report/csv/#{@user}/capture.cap&quot;</span>)
+    <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;\nDone storing cap file\n&quot;</span>
+  
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">p</span> <span class="ruby-node">&quot;FILE report/csv/#{@user}/capture.cap nao existe&quot;</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+  <span class="ruby-keyword">ensure</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">f</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+      <span class="ruby-identifier">f</span>.<span class="ruby-identifier">close</span>
+    <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-constant">File</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-node">&quot;report/csv/#{@user}/capture.cap&quot;</span>)
+  <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;\nDone storing cap file&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-delete_user" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">delete_user</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Apaga toda a informacao do utilizador</p>
+          
+          
+
+          
+          <div class="method-source-code" id="delete_user-source">
+            <pre><span class="ruby-comment"># File Sql_Reader_Writer.rb, line 216</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">delete_user</span>
+  <span class="ruby-keyword">begin</span> 
+  <span class="ruby-keyword">return</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-node">&quot;report/database/#{user}.db&quot;</span>)
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+    <span class="ruby-identifier">p</span> <span class="ruby-node">&quot;Sql_Reader_Writer : func delete_user #{e}&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-delete_user_login" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">delete_user_login</span><span
+            class="method-args">(user)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Apaga o login do utilizador</p>
+          
+          
+
+          
+          <div class="method-source-code" id="delete_user_login-source">
+            <pre><span class="ruby-comment"># File Sql_Reader_Writer.rb, line 194</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">delete_user_login</span>(<span class="ruby-identifier">user</span>)
+  <span class="ruby-keyword">begin</span> 
+  <span class="ruby-ivar">@db1</span> = <span class="ruby-constant">SQLite3</span><span class="ruby-operator">::</span><span class="ruby-constant">Database</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;report/database/program/user.db&quot;</span> )
+  <span class="ruby-identifier">_encoded_user</span> = <span class="ruby-constant">Base64</span>.<span class="ruby-identifier">encode64</span>(<span class="ruby-ivar">@cipher</span>.<span class="ruby-identifier">cipher</span>(<span class="ruby-identifier">user</span>))
+  <span class="ruby-identifier">p</span> <span class="ruby-identifier">_encoded_user</span>
+  <span class="ruby-ivar">@db1</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;DELETE FROM user WHERE username='#{_encoded_user}' &quot;</span>)
+  <span class="ruby-identifier">printf</span>(<span class="ruby-node">&quot;user deleted #{user}&quot;</span>)
+<span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">e</span>
+  <span class="ruby-comment">#p e</span>
+<span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-service_csv_to_sql" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">service_csv_to_sql</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Pega no conteudo de um ficheiro CSV  file Cifra o conteudo da linha com a
+password fornecida pelo utiliador e insere no SQLITE (EXISTE SE QUISERMOS
+UMA PASSWORD PARA CADA OPERACAO, UMA PARA O LOGIN DO USER e UMA PARA CADA
+FICHEIRO PROCESSADO)</p>
+          
+          
+
+          
+          <div class="method-source-code" id="service_csv_to_sql-source">
+            <pre><span class="ruby-comment"># File Sql_Reader_Writer.rb, line 42</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">service_csv_to_sql</span>
+  <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">foreach</span>(<span class="ruby-node">&quot;report/csv/#{@user}/&quot;</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">el</span><span class="ruby-operator">|</span>
+ <span class="ruby-keyword">if</span>(<span class="ruby-identifier">el</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;.&quot;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">el</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;..&quot;</span> )
+   <span class="ruby-identifier">lm</span> = <span class="ruby-identifier">el</span>.<span class="ruby-identifier">match</span> <span class="ruby-regexp">/(.+)\.csv/</span> <span class="ruby-comment"># retira o q tem extensao cap</span>
+   <span class="ruby-keyword">if</span> <span class="ruby-identifier">lm</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+     <span class="ruby-identifier">service</span> = <span class="ruby-identifier">lm</span>[<span class="ruby-value">1</span>]
+     <span class="ruby-identifier">printf</span> <span class="ruby-node">&quot;IMPORTING #{service} CSV to sql\n&quot;</span>
+     <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;report/csv/#{@user}/#{el}&quot;</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">fop</span><span class="ruby-operator">|</span>
+                        <span class="ruby-keyword">begin</span>
+                           <span class="ruby-keyword">while</span> <span class="ruby-identifier">line</span> = <span class="ruby-identifier">fop</span>.<span class="ruby-identifier">readline</span>
+                             <span class="ruby-identifier">lm</span> = <span class="ruby-identifier">line</span>.<span class="ruby-identifier">match</span> <span class="ruby-regexp">/(.+);(.+)/</span>
+                             <span class="ruby-keyword">begin</span>
+                               <span class="ruby-comment">#p lm</span>
+                             <span class="ruby-comment">#@db.execute(&quot;INSERT INTO auth_ufw (service,ip_address,timestamp) VALUES ('#{service}',#{lm[1]},#{lm[2]})&quot;)</span>
+                               
+                               <span class="ruby-identifier">_service</span> = <span class="ruby-constant">Base64</span>.<span class="ruby-identifier">encode64</span>(<span class="ruby-ivar">@cipher</span>.<span class="ruby-identifier">cipher</span>(<span class="ruby-node">&quot;#{service}&quot;</span>))
+                               <span class="ruby-identifier">_ip_address</span> =  <span class="ruby-constant">Base64</span>.<span class="ruby-identifier">encode64</span>(<span class="ruby-ivar">@cipher</span>.<span class="ruby-identifier">cipher</span>(<span class="ruby-node">&quot;#{lm[1]}&quot;</span>))
+                               <span class="ruby-identifier">_timestamp</span> =  <span class="ruby-constant">Base64</span>.<span class="ruby-identifier">encode64</span>(<span class="ruby-ivar">@cipher</span>.<span class="ruby-identifier">cipher</span>(<span class="ruby-node">&quot;#{lm[2]}&quot;</span>))
+                                <span class="ruby-comment"># p _service</span>
+                               <span class="ruby-ivar">@db</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;INSERT INTO auth_ufw (service,ip_address,timestamp) VALUES ('#{_service}','#{_ip_address}','#{_timestamp}')&quot;</span>)
+
+                             <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">e</span>
+                               <span class="ruby-identifier">p</span> <span class="ruby-node">&quot;sql_reader_writer.rb service_csv_to_sql : #{e}&quot;</span>
+                             <span class="ruby-keyword">end</span>
+                           <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">rescue</span>
+                          
+                        <span class="ruby-keyword">end</span>
+                          
+     }
+     <span class="ruby-comment">#depois de processado para a BD apagar o ficheiro</span>
+     <span class="ruby-constant">File</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-node">&quot;report/csv/#{@user}/#{el}&quot;</span>)
+   <span class="ruby-keyword">end</span>
+ <span class="ruby-keyword">end</span>
+  }
+  
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-sql_to_cap_csv" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">sql_to_cap_csv</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Pega no conteudo de uma tabela com o conteudo do ficheiro CAP e exporta
+para cap</p>
+
+<p>DECifra o conteudo da linha com a password fornecida pelo utiliador e
+escreve no ficheiro (EXISTE SE QUISERMOS UMA PASSWORD PARA CADA OPERACAO,
+UMA PARA O LOGIN DO USER e UMA PARA CADA FICHEIRO PROCESSADO)</p>
+          
+          
+
+          
+          <div class="method-source-code" id="sql_to_cap_csv-source">
+            <pre><span class="ruby-comment"># File Sql_Reader_Writer.rb, line 159</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">sql_to_cap_csv</span>
+<span class="ruby-keyword">begin</span> 
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-node">&quot;report/csv/#{@user}/capture.cap&quot;</span>)
+    <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;Importing new cap file first&quot;</span>
+    <span class="ruby-identifier">csv_cap_to_sql</span>
+    <span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;Done&quot;</span>
+  <span class="ruby-keyword">end</span> 
+  <span class="ruby-identifier">printf</span> <span class="ruby-node">&quot;dumping cap to report/csv/#{@user}/capture.cap \n&quot;</span>
+  <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;report/csv/#{@user}/capture.cap&quot;</span>,<span class="ruby-identifier">mode</span>=<span class="ruby-string">&quot;w&quot;</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">fopen</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">row_array</span> = <span class="ruby-ivar">@db</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-string">&quot;select * from capture&quot;</span>)
+    <span class="ruby-identifier">row_array</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">r</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">fopen</span>.<span class="ruby-identifier">write</span>(<span class="ruby-ivar">@cipher</span>.<span class="ruby-identifier">decipher</span>(<span class="ruby-constant">Base64</span>.<span class="ruby-identifier">decode64</span>(<span class="ruby-node">&quot;#{r[1]}&quot;</span>)))
+      <span class="ruby-identifier">fopen</span>.<span class="ruby-identifier">write</span>(<span class="ruby-string">&quot;;&quot;</span>)
+      <span class="ruby-identifier">fopen</span>.<span class="ruby-identifier">write</span>(<span class="ruby-ivar">@cipher</span>.<span class="ruby-identifier">decipher</span>(<span class="ruby-constant">Base64</span>.<span class="ruby-identifier">decode64</span>(<span class="ruby-node">&quot;#{r[2]}&quot;</span>)))
+      <span class="ruby-identifier">fopen</span>.<span class="ruby-identifier">write</span>(<span class="ruby-string">&quot;;&quot;</span>)
+      <span class="ruby-identifier">fopen</span>.<span class="ruby-identifier">write</span>(<span class="ruby-ivar">@cipher</span>.<span class="ruby-identifier">decipher</span>(<span class="ruby-constant">Base64</span>.<span class="ruby-identifier">decode64</span>(<span class="ruby-node">&quot;#{r[3]}&quot;</span>)))
+      <span class="ruby-identifier">fopen</span>.<span class="ruby-identifier">write</span>(<span class="ruby-string">&quot;;&quot;</span>)
+      <span class="ruby-identifier">fopen</span>.<span class="ruby-identifier">write</span>(<span class="ruby-ivar">@cipher</span>.<span class="ruby-identifier">decipher</span>(<span class="ruby-constant">Base64</span>.<span class="ruby-identifier">decode64</span>(<span class="ruby-node">&quot;#{r[4]}&quot;</span>)))
+      <span class="ruby-identifier">fopen</span>.<span class="ruby-identifier">write</span>(<span class="ruby-string">&quot;;&quot;</span>)
+      <span class="ruby-identifier">fopen</span>.<span class="ruby-identifier">write</span>(<span class="ruby-ivar">@cipher</span>.<span class="ruby-identifier">decipher</span>(<span class="ruby-constant">Base64</span>.<span class="ruby-identifier">decode64</span>(<span class="ruby-node">&quot;#{r[5]}&quot;</span>)))
+      <span class="ruby-identifier">fopen</span>.<span class="ruby-identifier">write</span>(<span class="ruby-string">&quot;\n&quot;</span>)
+
+          } 
+  }
+  <span class="ruby-ivar">@db</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-string">&quot;delete from capture &quot;</span>)  
+<span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+  <span class="ruby-identifier">printf</span> <span class="ruby-node">&quot;#{e}\n&quot;</span>
+  <span class="ruby-ivar">@db</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-string">&quot;delete from capture &quot;</span>)  
+<span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-sql_to_csv_service" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">sql_to_csv_service</span><span
+            class="method-args">(user)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Pega no conteudo de uma tabela com o conteudo do ficheiro CSV ou CAP e
+exporta para CSV  respectivamente DECifra o conteudo da linha com a
+password fornecida pelo utiliador e escreve no ficheiro (EXISTE SE
+QUISERMOS UMA PASSWORD PARA CADA OPERACAO, UMA PARA O LOGIN DO USER e UMA
+PARA CADA FICHEIRO PROCESSADO)</p>
+          
+          
+
+          
+          <div class="method-source-code" id="sql_to_csv_service-source">
+            <pre><span class="ruby-comment"># File Sql_Reader_Writer.rb, line 86</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">sql_to_csv_service</span>(<span class="ruby-identifier">user</span>)
+  <span class="ruby-identifier">printf</span><span class="ruby-string">&quot;IMPORTING REMAINING CSV FILES FIRST\n&quot;</span>
+  <span class="ruby-identifier">service_csv_to_sql</span>
+ <span class="ruby-comment"># p &quot;START&quot;</span>
+  <span class="ruby-keyword">begin</span>   
+  <span class="ruby-identifier">query</span> = <span class="ruby-string">&quot;SELECT * FROM auth_ufw &quot;</span>
+  <span class="ruby-ivar">@db</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-identifier">query</span>).<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">r</span><span class="ruby-operator">|</span> 
+  <span class="ruby-identifier">_service</span> = <span class="ruby-identifier">r</span>[<span class="ruby-value">1</span>]
+  <span class="ruby-identifier">_ip_address</span> = <span class="ruby-identifier">r</span>[<span class="ruby-value">2</span>]
+  <span class="ruby-identifier">_timestamp</span> = <span class="ruby-identifier">r</span>[<span class="ruby-value">3</span>]
+  <span class="ruby-identifier">_f</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;report/csv/#{user}/#{@cipher.decipher(Base64.decode64(_service))}.csv&quot;</span>,<span class="ruby-identifier">mode</span>=<span class="ruby-string">&quot;a+&quot;</span>)
+  <span class="ruby-identifier">_f</span>.<span class="ruby-identifier">write</span>(<span class="ruby-node">&quot;#{@cipher.decipher(Base64.decode64(_ip_address))};#{@cipher.decipher(Base64.decode64(_timestamp))}\n&quot;</span>)
+    <span class="ruby-comment">#p &quot;#{@cipher.decipher(Base64.decode64(_service))};#{@cipher.decipher(Base64.decode64(_ip_address))};#{@cipher.decipher(Base64.decode64(_timestamp))} &quot;</span>
+  <span class="ruby-identifier">_f</span>.<span class="ruby-identifier">close</span>
+  }
+  <span class="ruby-ivar">@db</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-string">&quot;delete from auth_ufw&quot;</span>)
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">e</span>
+    <span class="ruby-identifier">p</span> <span class="ruby-identifier">e</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.2.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

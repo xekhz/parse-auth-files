@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Draw_map - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-draw_randomize">#draw_randomize</a>
+    
+    <li ><a href="#method-i-get_country_code2">#get_country_code2</a>
+    
+    <li ><a href="#method-i-get_country_code3">#get_country_code3</a>
+    
+    <li ><a href="#method-i-get_country_colors">#get_country_colors</a>
+    
+    <li ><a href="#method-i-get_country_name">#get_country_name</a>
+    
+    <li ><a href="#method-i-get_filename">#get_filename</a>
+    
+    <li ><a href="#method-i-information_by_date">#information_by_date</a>
+    
+    <li ><a href="#method-i-process_csv_file">#process_csv_file</a>
+    
+    <li ><a href="#method-i-randomize_country_colors">#randomize_country_colors</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Draw_map">
+  <h1 id="class-Draw_map" class="class">
+    class Draw_map
+  </h1>
+
+  <section class="description">
+    
+<p>Classe responsavel por processar ficheiros CSV processa ficheiros CSV para
+criar os mapas</p>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(f)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>initializa o objecto Recebe o ficheiro csv que deve ser processado
+Instancia o objecto que desenha o mapa  e instancia as variaveis que serao
+utilizadas no decorrer da construcao do mapa</p>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Draw_map.rb, line 23</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">f</span>)
+  <span class="ruby-constant">Debugger</span>.<span class="ruby-identifier">set_level</span>(<span class="ruby-value">1</span>)
+ <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">f</span>) <span class="ruby-keyword">then</span>
+   <span class="ruby-ivar">@worldize</span> = <span class="ruby-constant">Worldize</span><span class="ruby-operator">::</span><span class="ruby-constant">Countries</span>.<span class="ruby-identifier">new</span> 
+   <span class="ruby-ivar">@filename</span> = <span class="ruby-identifier">f</span>
+<span class="ruby-comment">#   @geoip = GeoIP.new('GeoIP.dat')</span>
+   <span class="ruby-ivar">@geoip</span> = <span class="ruby-constant">GeoIP</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">'GeoLiteCity.dat'</span>)
+   <span class="ruby-comment">#contem o country e os hits</span>
+   <span class="ruby-ivar">@country_code3</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>()
+   <span class="ruby-ivar">@country_code2</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>()
+   <span class="ruby-ivar">@country_name</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+   <span class="ruby-ivar">@information_by_date</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+ <span class="ruby-keyword">else</span>
+   <span class="ruby-constant">Debugger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-node">&quot;Ficheiro nao existe: #{f}&quot;</span>,<span class="ruby-value">1</span>)
+   <span class="ruby-keyword">return</span>
+ <span class="ruby-keyword">end</span>      
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-draw_randomize" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">draw_randomize</span><span
+            class="method-args">(path)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>desenha o mapa</p>
+          
+          
+
+          
+          <div class="method-source-code" id="draw_randomize-source">
+            <pre><span class="ruby-comment"># File Draw_map.rb, line 162</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">draw_randomize</span>(<span class="ruby-identifier">path</span>)
+  <span class="ruby-constant">Worldize</span><span class="ruby-operator">::</span><span class="ruby-constant">Countries</span>.<span class="ruby-identifier">new</span>.
+    <span class="ruby-identifier">draw</span>(
+   <span class="ruby-ivar">@country_colors</span>
+    ).
+    <span class="ruby-identifier">write</span>(<span class="ruby-identifier">path</span>) 
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-get_country_code2" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_country_code2</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>retorna a variavel de instancia @country_code2 ( com 2 digitos q
+identificam o pais)</p>
+          
+          
+
+          
+          <div class="method-source-code" id="get_country_code2-source">
+            <pre><span class="ruby-comment"># File Draw_map.rb, line 200</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_country_code2</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@country_code2</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-get_country_code3" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_country_code3</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>retorna a variavel de instancia @country_code3 ( com 3 digitos q
+identificam o pais)</p>
+          
+          
+
+          
+          <div class="method-source-code" id="get_country_code3-source">
+            <pre><span class="ruby-comment"># File Draw_map.rb, line 192</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_country_code3</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@country_code3</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-get_country_colors" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_country_colors</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>retorna a variavel de instancia @country_color que é uma hash com pais e
+cor</p>
+          
+          
+
+          
+          <div class="method-source-code" id="get_country_colors-source">
+            <pre><span class="ruby-comment"># File Draw_map.rb, line 209</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_country_colors</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@country_colors</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-get_country_name" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_country_name</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>retorna a variavel de instancia @country_name</p>
+          
+          
+
+          
+          <div class="method-source-code" id="get_country_name-source">
+            <pre><span class="ruby-comment"># File Draw_map.rb, line 183</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_country_name</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@country_name</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-get_filename" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_filename</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Obtem o nome do ficheiro com extensao csv</p>
+          
+          
+
+          
+          <div class="method-source-code" id="get_filename-source">
+            <pre><span class="ruby-comment"># File Draw_map.rb, line 175</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_filename</span>
+  <span class="ruby-identifier">name_match</span> = <span class="ruby-ivar">@filename</span>.<span class="ruby-identifier">match</span> <span class="ruby-regexp">/(\w+)\.csv/</span> 
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">name_match</span>[<span class="ruby-value">1</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-information_by_date" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">information_by_date</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>retorna a variavel de instancia @information_by_date com a informarcao das
+ocorrecias</p>
+          
+          
+
+          
+          <div class="method-source-code" id="information_by_date-source">
+            <pre><span class="ruby-comment"># File Draw_map.rb, line 218</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">information_by_date</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@information_by_date</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-process_csv_file" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">process_csv_file</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>processa linha a linha o ficheiro csv em questao atravez de expressao
+regular faz o match e retira a informacao pertinente e caso  seja possivel,
+com ip valido, consulta o GEOIP e retira a informacao da localizacao, nome
+do pais e os 3 e 2 digitos de identificacao do pais Durante o processo de
+analise constroi uma hash com a informacao do  country_hits, ou seja numero
+de tentativas do determinado pais e as horas da tentativa</p>
+          
+          
+
+          
+          <div class="method-source-code" id="process_csv_file-source">
+            <pre><span class="ruby-comment"># File Draw_map.rb, line 45</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">process_csv_file</span>
+  <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-ivar">@filename</span>).<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span> 
+    <span class="ruby-comment">#Debugger.debug(&quot;A processar linha: #{line}&quot;,2)</span>
+    <span class="ruby-identifier">ip_match</span>  = <span class="ruby-identifier">line</span>.<span class="ruby-identifier">match</span> <span class="ruby-regexp">/(\d+\.\d+\.\d+\.\d+)/</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">ip_match</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+      <span class="ruby-identifier">ip_match</span>=[<span class="ruby-string">'127.0.0.1'</span>,<span class="ruby-string">'127.0.0.1'</span>]
+        <span class="ruby-identifier">p</span> <span class="ruby-string">&quot;Draw_map : 45 : ERRO em ip_match  = line.match /(\d+\.\d+\.\d+\.\d+)/ &quot;</span>
+        <span class="ruby-keyword">next</span> <span class="ruby-comment"># erro no ip alerta e sai</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">date_match</span> = <span class="ruby-identifier">line</span>.<span class="ruby-identifier">match</span> <span class="ruby-regexp">/(\d+\.\d+\.\d+\.\d+).;.(\w{3}\s+\d{,2})\s(\d{2}):\d{2}:\d{2}/</span> <span class="ruby-comment"># Feb 24 10:27:46    </span>
+    <span class="ruby-identifier">_data</span> =<span class="ruby-string">''</span>
+    <span class="ruby-identifier">_hour</span> =<span class="ruby-string">''</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">date_match</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> 
+    <span class="ruby-identifier">_data</span> = <span class="ruby-identifier">date_match</span>[<span class="ruby-value">2</span>]
+    <span class="ruby-identifier">_hour</span> = <span class="ruby-identifier">date_match</span>[<span class="ruby-value">3</span>]
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">_data</span> = <span class="ruby-string">'UKNOWN'</span>
+      <span class="ruby-identifier">_hour</span> = <span class="ruby-string">'--'</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-comment">#p(&quot;#{@geoip.country(ip_match[1])}&quot;) </span>
+    <span class="ruby-comment"># p @geoip.country(&quot;#{ip_match[1]}&quot;)</span>
+  
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@geoip</span>.<span class="ruby-identifier">country</span>(<span class="ruby-node">&quot;#{ip_match[1]}&quot;</span>) <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+      <span class="ruby-comment">#</span>
+      <span class="ruby-comment"># Para o caso de o IP nao se encontrar na base de dados temos de atribuir um valor de desconhecido</span>
+      <span class="ruby-comment">#</span>
+      <span class="ruby-comment">#</span>
+       <span class="ruby-keyword">begin</span>
+         
+         <span class="ruby-ivar">@country_code3</span>.<span class="ruby-identifier">store</span>(<span class="ruby-string">&quot;A1&quot;</span>,<span class="ruby-ivar">@country_code3</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-string">&quot;A1&quot;</span>)<span class="ruby-operator">+</span><span class="ruby-value">1</span>)
+         <span class="ruby-ivar">@country_code2</span>.<span class="ruby-identifier">store</span>(<span class="ruby-string">&quot;A1&quot;</span>,<span class="ruby-ivar">@country_code2</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-string">&quot;A1&quot;</span>)<span class="ruby-operator">+</span><span class="ruby-value">1</span>)
+         <span class="ruby-ivar">@country_name</span>.<span class="ruby-identifier">store</span>(<span class="ruby-node">&quot;#{ip_match[1]}&quot;</span>,<span class="ruby-ivar">@country_name</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-node">&quot;#{ip_match[1]}&quot;</span>)<span class="ruby-operator">+</span><span class="ruby-value">1</span>)
+         
+       <span class="ruby-keyword">rescue</span>
+         
+         <span class="ruby-ivar">@country_code3</span>.<span class="ruby-identifier">store</span>(<span class="ruby-string">&quot;A1&quot;</span>,<span class="ruby-value">1</span>)
+         <span class="ruby-ivar">@country_code2</span>.<span class="ruby-identifier">store</span>(<span class="ruby-string">&quot;A1&quot;</span>,<span class="ruby-value">1</span>)
+         <span class="ruby-ivar">@country_name</span>.<span class="ruby-identifier">store</span>(<span class="ruby-node">&quot;#{ip_match[1]}&quot;</span>,<span class="ruby-value">1</span>)
+       <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">next</span>
+    <span class="ruby-keyword">end</span>
+   <span class="ruby-comment"># @geoip.country(&quot;#{ip_match[1]}&quot;).country_code3</span>
+   <span class="ruby-comment"># @geoip.country(&quot;#{ip_match[1]}&quot;).country_code2</span>
+    
+    <span class="ruby-keyword">begin</span>
+     <span class="ruby-comment">#coloca a data como chave do que e para analisar </span>
+      <span class="ruby-keyword">begin</span>
+       <span class="ruby-comment"># p @information_by_date</span>
+       <span class="ruby-comment"># p ip_match[1]</span>
+        <span class="ruby-identifier">t_h_hour</span> = <span class="ruby-ivar">@information_by_date</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">_data</span>)
+        <span class="ruby-comment"># p t_h_hour</span>
+        <span class="ruby-keyword">begin</span>
+          
+          <span class="ruby-identifier">t_h_ip</span> = <span class="ruby-identifier">t_h_hour</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">_hour</span>)
+          <span class="ruby-keyword">begin</span>
+       
+           <span class="ruby-identifier">t_hits</span> = <span class="ruby-identifier">t_h_ip</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">ip_match</span>[<span class="ruby-value">1</span>])
+           <span class="ruby-identifier">t_h_ip</span>.<span class="ruby-identifier">store</span>(<span class="ruby-identifier">ip_match</span>[<span class="ruby-value">1</span>],<span class="ruby-identifier">t_hits</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>)
+          <span class="ruby-keyword">rescue</span>
+          
+          <span class="ruby-comment"># p &quot;a inserir ip na hash #{t_h_ip}&quot;</span>
+           <span class="ruby-identifier">t_h_ip</span>.<span class="ruby-identifier">store</span>(<span class="ruby-identifier">ip_match</span>[<span class="ruby-value">1</span>],<span class="ruby-value">1</span>)
+           <span class="ruby-comment"># p &quot;HASH de ips #{t_h_ip}&quot;</span>
+          <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">rescue</span>
+        <span class="ruby-identifier">t_h_hour</span>.<span class="ruby-identifier">store</span>(<span class="ruby-identifier">_hour</span>,{<span class="ruby-identifier">ip_match</span>[<span class="ruby-value">1</span>]=<span class="ruby-operator">&gt;</span><span class="ruby-value">1</span>})
+          <span class="ruby-comment"># p &quot;a inserir #{ip_match[1]}&quot; </span>
+          <span class="ruby-comment"># p t_hour</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">rescue</span>
+        <span class="ruby-comment"># p &quot;A Inserir DATA #{_data} #{t_h_hour} &lt;-&quot;</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">t_h_hour</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+          <span class="ruby-ivar">@information_by_date</span>.<span class="ruby-identifier">store</span>(<span class="ruby-identifier">_data</span>,{<span class="ruby-identifier">_hour</span>=<span class="ruby-operator">&gt;</span>{<span class="ruby-identifier">ip_match</span>[<span class="ruby-value">1</span>]=<span class="ruby-operator">&gt;</span><span class="ruby-value">1</span>}})
+          <span class="ruby-keyword">else</span>
+          <span class="ruby-ivar">@information_by_date</span>.<span class="ruby-identifier">store</span>(<span class="ruby-identifier">_data</span>,<span class="ruby-identifier">t_h_hour</span>)
+          <span class="ruby-keyword">end</span>
+        <span class="ruby-comment"># p @information_by_date</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-constant">Debugger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-node">&quot;@information_by_date: #{@information_by_date}\n&quot;</span>,<span class="ruby-value">2</span>)
+    <span class="ruby-ivar">@country_code3</span>.<span class="ruby-identifier">store</span>(<span class="ruby-ivar">@geoip</span>.<span class="ruby-identifier">country</span>(<span class="ruby-node">&quot;#{ip_match[1]}&quot;</span>).<span class="ruby-identifier">country_code3</span>, <span class="ruby-ivar">@country_code3</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-ivar">@geoip</span>.<span class="ruby-identifier">country</span>(<span class="ruby-node">&quot;#{ip_match[1]}&quot;</span>).<span class="ruby-identifier">country_code3</span>) <span class="ruby-operator">+</span><span class="ruby-value">1</span> )
+    <span class="ruby-ivar">@country_code2</span>.<span class="ruby-identifier">store</span>(<span class="ruby-ivar">@geoip</span>.<span class="ruby-identifier">country</span>(<span class="ruby-node">&quot;#{ip_match[1]}&quot;</span>).<span class="ruby-identifier">country_code2</span>, <span class="ruby-ivar">@country_code2</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-ivar">@geoip</span>.<span class="ruby-identifier">country</span>(<span class="ruby-node">&quot;#{ip_match[1]}&quot;</span>).<span class="ruby-identifier">country_code2</span>) <span class="ruby-operator">+</span><span class="ruby-value">1</span> )
+    <span class="ruby-ivar">@country_name</span>.<span class="ruby-identifier">store</span>(<span class="ruby-ivar">@geoip</span>.<span class="ruby-identifier">country</span>(<span class="ruby-node">&quot;#{ip_match[1]}&quot;</span>).<span class="ruby-identifier">country_name</span>, <span class="ruby-ivar">@country_name</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-ivar">@geoip</span>.<span class="ruby-identifier">country</span>(<span class="ruby-node">&quot;#{ip_match[1]}&quot;</span>).<span class="ruby-identifier">country_name</span>) <span class="ruby-operator">+</span><span class="ruby-value">1</span> )
+     <span class="ruby-keyword">rescue</span> <span class="ruby-constant">KeyError</span>
+        <span class="ruby-ivar">@country_code3</span>.<span class="ruby-identifier">store</span>(<span class="ruby-ivar">@geoip</span>.<span class="ruby-identifier">country</span>(<span class="ruby-node">&quot;#{ip_match[1]}&quot;</span>).<span class="ruby-identifier">country_code3</span>,<span class="ruby-value">1</span>)
+        <span class="ruby-ivar">@country_code2</span>.<span class="ruby-identifier">store</span>(<span class="ruby-ivar">@geoip</span>.<span class="ruby-identifier">country</span>(<span class="ruby-node">&quot;#{ip_match[1]}&quot;</span>).<span class="ruby-identifier">country_code2</span>,<span class="ruby-value">1</span>)
+        <span class="ruby-ivar">@country_name</span>.<span class="ruby-identifier">store</span>(<span class="ruby-ivar">@geoip</span>.<span class="ruby-identifier">country</span>(<span class="ruby-node">&quot;#{ip_match[1]}&quot;</span>).<span class="ruby-identifier">country_name</span>,<span class="ruby-value">1</span>)
+    <span class="ruby-keyword">end</span>                       
+  } 
+  <span class="ruby-constant">Debugger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-node">&quot;@country_code2: #{@country_code2}\n&quot;</span>,<span class="ruby-value">2</span>)
+  <span class="ruby-constant">Debugger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-node">&quot;@country_code3: #{@country_code3}\n&quot;</span>,<span class="ruby-value">2</span>)
+  <span class="ruby-constant">Debugger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-node">&quot;@country_codename: #{@country_name}\n&quot;</span>,<span class="ruby-value">2</span>)
+  <span class="ruby-constant">Debugger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-node">&quot;@information_by_date: #{@information_by_date}\n&quot;</span>,<span class="ruby-value">2</span>)
+  
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-randomize_country_colors" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">randomize_country_colors</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Para o desenho do mapa existem duas alternativas,</p>
+<ul><li>
+<p>modo gradiente</p>
+</li><li>
+<p>modo manual ( sermos nos a definir q cor pertence a cada pais)</p>
+</li></ul>
+
+<p>A opcao escolhida foi a manual, isto pq, a china tinha muito muito muito
+mais hits que qualquer outro pais o que inviabilizava o uso do gradiente.
+Percorremos a lista de paises que teem hits e atribuimos uma cor,
+Garantidamente nunca repetimos uma cor ja atribuida  verifica se 
+@country_hits existe  e coloca uma cor diferente para cada pais</p>
+          
+          
+
+          
+          <div class="method-source-code" id="randomize_country_colors-source">
+            <pre><span class="ruby-comment"># File Draw_map.rb, line 149</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">randomize_country_colors</span>
+  <span class="ruby-ivar">@country_colors</span> = <span class="ruby-ivar">@country_code3</span>.<span class="ruby-identifier">clone</span>
+  <span class="ruby-ivar">@country_colors</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span>  <span class="ruby-keyword">begin</span>
+                              <span class="ruby-identifier">my_color</span> = (<span class="ruby-node">&quot;#%06x&quot;</span> <span class="ruby-operator">%</span> (<span class="ruby-identifier">rand</span> <span class="ruby-operator">*</span> <span class="ruby-value">0xffffff</span>))
+                              <span class="ruby-keyword">end</span> <span class="ruby-keyword">while</span> <span class="ruby-ivar">@country_colors</span>.<span class="ruby-identifier">value?</span>(<span class="ruby-identifier">my_color</span>)
+                              <span class="ruby-ivar">@country_colors</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">my_color</span>
+                              <span class="ruby-ivar">@country_colors</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-node">&quot;#ffffff&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-node">&quot;#{k}&quot;</span><span class="ruby-operator">==</span><span class="ruby-string">&quot;A1&quot;</span>
+                            } 
+    
+<span class="ruby-constant">Debugger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-node">&quot;@country_colors: #{@country_colors}\n&quot;</span>,<span class="ruby-value">2</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.2.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
